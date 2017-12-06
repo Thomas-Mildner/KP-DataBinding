@@ -1,0 +1,6 @@
+<md-toolbar class="md-primary" md-elevation="1">
+  <h2 class="md-title" style="flex: 1">KP WS17/18 - Two-way databinding in MVC</h2>
+  <md-button v-for="link in links" :key="link.name" @click.native="$router.push(link.path)">
+    {{link.name}}
+  </md-button>
+</md-toolbar>
