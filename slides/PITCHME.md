@@ -1,6 +1,6 @@
 @title[Einleitung]
 
-# Two-way data binding
+# Two-way data binding in MVC
 
 Peter Kurfer, Thomas Mildner
 
@@ -38,7 +38,15 @@ Peter Kurfer, Thomas Mildner
 
 ![Logo](../assets/images/observer.png)
 
++++
 
+## MVC Concept
+
+<div align="center">
+
+![MVC](../assets/images/mvcConcept.png)
+
+</div>
 +++ 
 
 ## Challenges for data binding
@@ -220,3 +228,5 @@ Evtl noch Angular 2.0 Databinding zeigen?
 --- 
 
 ## Exercise
+
+![Exercise](../assets/images/exercise.png)
