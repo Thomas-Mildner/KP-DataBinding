@@ -76,6 +76,32 @@ Peter Kurfer, Thomas Mildner
 
 ## Typescript
 
+&rarr; statically typed language </br> 
+&rarr; compiles to plain javascript </br> 
+&rarr; popular js framework <b>Angular 2.0</b> </br> 
+
++++
+
+## Problems of Javascript
+
+&rarr; JS first developed as a language for client-side </br>
+&rarr; Node.js marked JS as an emerging server-side technology </br>  
+&rarr; JS difficult to maintain and not reusable</br> 
+&rarr; no Object Orientation, no strong type checks, no compiling checks </br> 
+
++++
+
+## Solution = Typescript
+
+&rarr; designed by Andrers Hejlsberg (Designer of C# at Microsoft) </br> 
+&rarr; strongly typed, object orientated and compiled language </br> 
+&rarr; Typescript is a superset of Javascript </br> 
+&rarr; will be compiled to Javascript </br> 
+
++++
+Typescript is Javascript plus some additional features </br>
+
+![Logo](../assets/images/typescriptSuper.png)
 --- 
 
 ## Vue.js
