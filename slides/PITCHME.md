@@ -142,6 +142,7 @@ obj.greet()
 +++
 ## Variables and Compile Checks
 
+TypeScript:
 ```ts
 var name:string = "John"; 
 var score1:number = 50;
@@ -149,13 +150,14 @@ var score2:number = 42.50
 var sum = score1 + score2 
 ```
 
+JavaScript:
 ```js
 var name = "John";
 var score1 = 50;
 var score2 = 42.50;
 var sum = score1 + score2;
 ```
-
+Compile Error:
 ```js
 var num:number = "hello"     // will result in a compilation error
 ```
