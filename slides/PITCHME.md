@@ -45,22 +45,24 @@ Peter Kurfer, Thomas Mildner
 
 ## Frameworks supporting databinding
 
- ---
+
+---
 
 ## Typescript
 
- --- 
+--- 
 
 ## Vue.js
 
- ---
+
+---
 
 ## Databinding in vue.js
 
- ---
+---
 
 ## Problems of databinding
 
- --- 
+--- 
 
 ## Exercise
