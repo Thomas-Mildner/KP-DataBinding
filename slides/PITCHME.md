@@ -27,8 +27,15 @@ Peter Kurfer, Thomas Mildner
 ---
 ## What is data binding?
 
+&rarr; Software Design Pattern
 
 
++++ 
+
+## Requirements for data binding
+
+&rarr; input validation
+&rarr; data type mapping 
 
 ---
 
@@ -45,6 +52,7 @@ Peter Kurfer, Thomas Mildner
 
 ## Frameworks supporting databinding
 
+![Logo](assets/Logo_Map.png)
 
 ---
 
