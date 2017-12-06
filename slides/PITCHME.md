@@ -52,7 +52,7 @@ Peter Kurfer, Thomas Mildner
 
 ## Frameworks supporting databinding
 
-![Logo](assets/images/logo_map.png)
+![Logo](../assets/images/logo_map.png)
 
 ---
 
