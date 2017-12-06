@@ -28,7 +28,8 @@ Peter Kurfer, Thomas Mildner
 ## What is data binding?
 
 &rarr; Software Design Pattern <br/>
-&rarr; Observer Pattern
+&rarr; Observer Pattern works as underlying binding mechanism <br/>
+&rarr; bind UI element to an application model
 
 +++
 ## Observer Pattern
@@ -39,10 +40,20 @@ Peter Kurfer, Thomas Mildner
 
 +++ 
 
-## Requirements for data binding
+## Challenges for data binding
 
-&rarr; input validation </br>
-&rarr; data type mapping 
+<div>
+&rarr; input validation </br> 
+&rarr; data type mapping
+</div>
+
+<div align="right">
+
+  ![Logo](../assets/images/validation.png)
+
+</div>
+
+
 
 ---
 
