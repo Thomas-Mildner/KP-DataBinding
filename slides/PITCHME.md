@@ -27,7 +27,14 @@ Peter Kurfer, Thomas Mildner
 ---
 ## What is data binding?
 
-&rarr; Software Design Pattern
+&rarr; Software Design Pattern <br/>
+&rarr; Observer Pattern
+
++++
+## Observer Pattern
+
+
+![Logo](../assets/images/observer.png)
 
 
 +++ 
