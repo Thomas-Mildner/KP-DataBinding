@@ -161,6 +161,47 @@ Compile Error:
 ```js
 var num:number = "hello"     // will result in a compilation error
 ```
+
+++
+## Functions
+
+```ts
+function calculate_discount(price:number,rate:number = 0.50) { 
+   var discount = price * rate; 
+   console.log("Discount Amount: ",discount); 
+} 
+calculate_discount(1000) 
+calculate_discount(1000,0.30) // call method without default parameter
+
+```
++++ 
+
+## Anonymous functions
+
+```ts
+var res = function(a:number,b:number) { 
+   return a*b;  
+}; 
+console.log(res(12,2)) 
+```
++++
+
+## Lambda Expressions
+
+TypeScript:
+```ts
+var foo = (x:number)=>10 + x 
+console.log(foo(100))      //outputs 110 
+```
+
+JavaScript:
+```js
+var foo = function (x) { return 10 + x; };
+console.log(foo(100));      //outputs 110
+```
++++
+
+
 --- 
 
 ## Vue.js
