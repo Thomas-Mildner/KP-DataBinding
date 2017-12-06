@@ -201,6 +201,8 @@ console.log(foo(100));      //outputs 110
 ```
 +++
 
+<!-- TODO -->
+Evtl noch Angular 2.0 Databinding zeigen? 
 
 --- 
 
