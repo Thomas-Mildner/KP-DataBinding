@@ -23,41 +23,44 @@ Peter Kurfer, Thomas Mildner
 * Problems of databinding
 * Exercise
 
-+++
 
+---
 ## What is data binding?
 
 
 
-+++
+
+---
 
 ## History and concepts
 
 
-+++
+
+---
 
 ## Two-way vs. One-way databinding
 
-+++
+
+---
 
 ## Frameworks supporting databinding
 
-+++
+ ---
 
 ## Typescript
 
-+++ 
+ --- 
 
 ## Vue.js
 
-+++
+ ---
 
 ## Databinding in vue.js
 
-+++
+ ---
 
 ## Problems of databinding
 
-+++ 
+ --- 
 
 ## Exercise
