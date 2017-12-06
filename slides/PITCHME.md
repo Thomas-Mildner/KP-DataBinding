@@ -8,7 +8,7 @@ Peter Kurfer, Thomas Mildner
 
 ## Agenda
 
-* What is data binding
+* What is data binding?
 * History and concepts
 * Two-way vs. One-way databinding
 * Frameworks supporting databinding
@@ -22,3 +22,42 @@ Peter Kurfer, Thomas Mildner
 * Databinding in Vue.js
 * Problems of databinding
 * Exercise
+
++++
+
+## What is data binding?
+
+
+
++++
+
+## History and concepts
+
+
++++
+
+## Two-way vs. One-way databinding
+
++++
+
+## Frameworks supporting databinding
+
++++
+
+## Typescript
+
++++ 
+
+## Vue.js
+
++++
+
+## Databinding in vue.js
+
++++
+
+## Problems of databinding
+
++++ 
+
+## Exercise
