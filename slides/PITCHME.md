@@ -27,9 +27,10 @@ Peter Kurfer, Thomas Mildner
 ---
 ## What is data binding?
 
+&rarr; bind UI element to an application model </br>
 &rarr; Software Design Pattern <br/>
-&rarr; Observer Pattern works as underlying binding mechanism <br/>
-&rarr; bind UI element to an application model
+&rarr; Observer Pattern works often as underlying binding mechanism <br/>
+
 
 +++
 ## Observer Pattern
@@ -74,11 +75,11 @@ Peter Kurfer, Thomas Mildner
 
 ---
 
-## Typescript
+## TypeScript
 
 &rarr; statically typed language </br> 
 &rarr; compiles to plain javascript </br> 
-&rarr; popular js framework <b>Angular 2.0</b> </br> 
+&rarr; popular JS framework <b>Angular 2.0</b> </br> 
 
 +++
 
@@ -91,23 +92,52 @@ Peter Kurfer, Thomas Mildner
 
 +++
 
-## Solution = Typescript
+## Solution = TypeScript
 
 &rarr; designed by Andrers Hejlsberg (Designer of C# at Microsoft) </br> 
 &rarr; strongly typed, object orientated and compiled language </br> 
-&rarr; Typescript is a superset of Javascript </br> 
+&rarr; TypeScript is a superset of Javascript </br> 
 &rarr; will be compiled to Javascript </br> 
 
 +++
-Typescript is Javascript plus some additional features </br>
+TypeScript is Javascript plus some additional features </br>
 
-![Logo](../assets/images/typescriptSuper.png)
+![Logo](../assets/images/TypeScriptSuper.png)
 
 +++
 
 ## Features of TypeScript
-<table style="border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto"><tr><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Feature</th><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Usage</th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">Typescript is just JavaScript</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">Only knowledge of JS required</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">Supports other JS Libraries</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">can be consumed of any JS Code. Can reuse all existing<br>JS frameworks, tools and libraries</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">JavaScript is Typescript</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">Any &lt;b&gt;.js&lt;/b&gt; file can be renamed to &lt;b&gt;.ts&lt;/b&gt; and <br>compiled with other TypeScript Files</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">Typescript is portable</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">Portable accross multiple browsers, devices and operating systems.<br>&amp;rarr; runs whereever JS runs</td></tr></table>
+<table style="border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto"><tr><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Feature</th><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Usage</th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">TypeScript is just JavaScript</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">Only knowledge of JS required</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">Supports other JS Libraries</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">can be consumed of any JS Code. Can reuse all existing<br>JS frameworks, tools and libraries</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">JavaScript is TypeScript</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">Any &lt;b&gt;.js&lt;/b&gt; file can be renamed to &lt;b&gt;.ts&lt;/b&gt; and <br>compiled with other TypeScript Files</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">TypeScript is portable</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">Portable accross multiple browsers, devices and operating systems.<br>&amp;rarr; runs whereever JS runs</td></tr></table>
 
++++
+## First example of Typescript ...
+```ts
+class Greeting { 
+   greet():void { 
+      console.log("Hello World!!!") 
+   } 
+} 
+
+var obj = new Greeting(); 
+obj.greet();
+```
+
++++ 
+
+## will be compiled to JavaScript as followed:
+```js
+var Greeting = (function () {
+   function Greeting() {
+   }
+   Greeting.prototype.greet = function () {
+      console.log("Hello World!!!");
+   };
+	return Greeting;
+}());
+
+var obj = new Greeting();
+obj.greet()
+```
 --- 
 
 ## Vue.js
