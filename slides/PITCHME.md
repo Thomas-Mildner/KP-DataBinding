@@ -138,6 +138,27 @@ var Greeting = (function () {
 var obj = new Greeting();
 obj.greet()
 ```
+
++++
+## Variables and Compile Checks
+
+```ts
+var name:string = "John"; 
+var score1:number = 50;
+var score2:number = 42.50
+var sum = score1 + score2 
+```
+
+```js
+var name = "John";
+var score1 = 50;
+var score2 = 42.50;
+var sum = score1 + score2;
+```
+
+```js
+var num:number = "hello"     // will result in a compilation error
+```
 --- 
 
 ## Vue.js
