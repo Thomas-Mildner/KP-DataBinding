@@ -229,4 +229,4 @@ Evtl noch Angular 2.0 Databinding zeigen?
 
 ## Exercise
 
-+++?image=../assets/images/exercise.png
+![Exercise](../assets/images/exercise.png)
