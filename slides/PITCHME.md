@@ -34,7 +34,7 @@ Peter Kurfer, Thomas Mildner
 
 ## Requirements for data binding
 
-&rarr; input validation
+&rarr; input validation </br>
 &rarr; data type mapping 
 
 ---
@@ -52,7 +52,7 @@ Peter Kurfer, Thomas Mildner
 
 ## Frameworks supporting databinding
 
-![Logo](assets/Logo_Map.png)
+![Logo](assets/images/logo_map.png)
 
 ---
 
