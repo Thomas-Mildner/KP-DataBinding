@@ -75,6 +75,26 @@ Peter Kurfer, Thomas Mildner
 ## Two-way vs. One-way databinding
 
 
+&rarr; different binding types are supported <br/>
+&rarr; choose binding type for suited use case <br/>
+
+One-way &#171; vs. &#187; Two-way 
+
++++
+
+## One-way databinding
+
+&rarr; scope variable in HTML will be set to first value its model is bound to (first assignment) </br>
+
+&rarr; bind the data from model to view once
++++
+
+## Two-way databinding
+
+&rarr; scope variable will change its value every time the model is assigned to a different value </br>
+
+&rarr; bind the data from model to view and view to model
+
 ---
 
 ## Frameworks supporting databinding
