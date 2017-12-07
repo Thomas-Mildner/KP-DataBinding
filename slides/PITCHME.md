@@ -57,7 +57,7 @@ Peter Kurfer, Thomas Mildner
     &rarr; data type mapping
   </div>
   <div>
-    ![Logo](assets/images/validation.png)
+    <img src="https://github.com/Jonny9904/KP-DataBinding/blob/master/assets/images/validation.png?raw=true" alt="Validation">
   </div>
 </div>
 
