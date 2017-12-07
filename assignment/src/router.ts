@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import VueRouter, { Location, Route, RouteConfig } from 'vue-router';
-import { makeHot, reload } from './util/hot-reload';
+import VueRouter, {Location, Route, RouteConfig} from 'vue-router';
+import {makeHot, reload} from './util/hot-reload';
 
-const assignmentSpecComponent = () => import('./components/assignment-spec').then(({ AssignmentSpecComponent }) => AssignmentSpecComponent);
-const apiSpecComponent = () => import('./components/api-spec').then(({ ApiSpecComponent }) => ApiSpecComponent);
-const assignmentComponent = () => import('./components/assignment').then(({ AssignmentComponent: AssignmentComponent }) => AssignmentComponent);
+const assignmentSpecComponent = () => import('./components/assignment-spec').then(({AssignmentSpecComponent}) => AssignmentSpecComponent);
+const apiSpecComponent = () => import('./components/api-spec').then(({ApiSpecComponent}) => ApiSpecComponent);
+const assignmentComponent = () => import('./components/assignment').then(({AssignmentComponent: AssignmentComponent}) => AssignmentComponent);
+const lectureNotesComponent = () => import('./components/lecture-notes').then(({LectureNotesComponent: LectureNotesComponent}) => LectureNotesComponent);
 // const homeComponent = () => import(/* webpackChunkName: 'assignment-spec' */'./components/assignment-spec').then(({ AssignmentSpecComponent }) => AssignmentSpecComponent);
 // const aboutComponent = () => import(/* webpackChunkName: 'api-spec' */'./components/api-spec').then(({ ApiSpecComponent }) => ApiSpecComponent);
 // const listComponent = () => import(/* webpackChunkName: 'assignment' */'./components/assignment').then(({ AssignmentComponent }) => AssignmentComponent);
@@ -13,6 +14,7 @@ if (process.env.ENV === 'development' && module.hot) {
   const assignmentSpecModuleId = './components/assignment-spec';
   const apiSpecModuleId = './components/api-spec';
   const assignmentModuleId = './components/assignment';
+  const lectureNotesModuleId = './components/lecture-notes';
 
   // first arguments for `module.hot.accept` and `require` methods have to be static strings
   // see https://github.com/webpack/webpack/issues/5668
@@ -24,6 +26,9 @@ if (process.env.ENV === 'development' && module.hot) {
 
   makeHot(assignmentModuleId, assignmentComponent,
     module.hot.accept('./components/assignment', () => reload(assignmentModuleId, (<any>require('./components/assignment')).AssignmentComponent)));
+
+  makeHot(lectureNotesModuleId, lectureNotesComponent,
+    module.hot.accept('./components/lecture-notes', () => reload(lectureNotesModuleId, (<any>require('./components/lecture-notes')).LectureNotesComponent)));
 }
 
 Vue.use(VueRouter);
@@ -40,7 +45,11 @@ export const createRoutes: () => RouteConfig[] = () => [
   {
     path: '/assignment',
     component: assignmentComponent,
+  },
+  {
+    path: '/lecture-notes',
+    component: lectureNotesComponent
   }
 ];
 
-export const createRouter = () => new VueRouter({ mode: 'history', routes: createRoutes() });
+export const createRouter = () => new VueRouter({mode: 'history', routes: createRoutes()});
