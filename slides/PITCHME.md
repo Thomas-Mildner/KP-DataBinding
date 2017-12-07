@@ -51,18 +51,15 @@ Peter Kurfer, Thomas Mildner
 
 ## Challenges for data binding
 
-<div>
-&rarr; input validation </br> 
-&rarr; data type mapping
+<div class="twocolumn">
+  <div>
+    &rarr; input validation </br> 
+    &rarr; data type mapping
+  </div>
+  <div>
+    ![Logo](assets/images/validation.png)
+  </div>
 </div>
-
-<div align="right">
-
-  ![Logo](assets/images/validation.png)
-
-</div>
-
-
 
 ---
 
