@@ -36,7 +36,7 @@ Peter Kurfer, Thomas Mildner
 ## Observer Pattern
 
 
-![Logo](assets/images/observer.png)
+![Logo](assets/images/observer.jpg)
 
 +++
 
@@ -74,11 +74,10 @@ Peter Kurfer, Thomas Mildner
 
 ## Two-way vs. One-way databinding
 
-
 &rarr; different binding types are supported <br/>
 &rarr; choose binding type for suited use case <br/>
 
-One-way &#171; vs. &#187; Two-way 
+One-way &#171; vs. &#187; Two-way
 
 +++
 
@@ -141,7 +140,7 @@ One-way &#171; vs. &#187; Two-way
 
 TypeScript is Javascript plus some additional features </br>
 
-![Logo](assets/images/TypeScriptSuper.png)
+![Logo](assets/images/typescriptSuper.png)
 
 +++
 
@@ -181,14 +180,16 @@ obj.greet()
 ```
 
 +++
+
 ## Variables and Compile Checks
 
 TypeScript:
+
 ```ts
-var name:string = "John"; 
+var name:string = "John";
 var score1:number = 50;
 var score2:number = 42.50
-var sum = score1 + score2 
+var sum = score1 + score2
 ```
 
 JavaScript:
@@ -222,10 +223,10 @@ calculate_discount(1000,0.30) // call method without default parameter
 ## Anonymous functions
 
 ```ts
-var res = function(a:number,b:number) { 
-   return a*b;  
-}; 
-console.log(res(12,2)) 
+var res = function(a:number,b:number) {
+   return a*b;
+};
+console.log(res(12,2))
 ```
 
 +++
@@ -235,8 +236,8 @@ console.log(res(12,2))
 TypeScript:
 
 ```ts
-var foo = (x:number)=>10 + x 
-console.log(foo(100))      //outputs 110 
+var foo = (x:number)=>10 + x
+console.log(foo(100))      //outputs 110
 ```
 
 JavaScript:
@@ -251,10 +252,9 @@ console.log(foo(100));      //outputs 110
 <!-- TODO -->
 Evtl noch Angular 2.0 Databinding zeigen? 
 
---- 
+---
 
 ## Vue.js
-
 
 ---
 
@@ -264,8 +264,8 @@ Evtl noch Angular 2.0 Databinding zeigen?
 
 ## Problems of databinding
 
---- 
+---
 
 ## Exercise
 
-![Exercise](assets/images/exercise.png)
+![Exercise](assets/images/exercise.jpg)
