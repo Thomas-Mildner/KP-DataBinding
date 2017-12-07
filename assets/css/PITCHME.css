@@ -75,3 +75,10 @@ span.aside {
   text-transform: none;
   text-shadow: none;
 word-wrap: break-word; }
+
+.twocolumn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  text-align: left;
+}

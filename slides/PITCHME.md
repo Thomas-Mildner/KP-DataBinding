@@ -36,7 +36,7 @@ Peter Kurfer, Thomas Mildner
 ## Observer Pattern
 
 
-![Logo](../assets/images/observer.png)
+![Logo](assets/images/observer.jpg)
 
 +++
 
@@ -44,25 +44,22 @@ Peter Kurfer, Thomas Mildner
 
 <div align="center">
 
-![MVC](../assets/images/mvcConcept.png)
+![MVC](assets/images/mvcConcept.png)
 
 </div>
 +++ 
 
 ## Challenges for data binding
 
-<div>
-&rarr; input validation </br> 
-&rarr; data type mapping
+<div class="twocolumn">
+  <div>
+    &rarr; input validation </br> 
+    &rarr; data type mapping
+  </div>
+  <div>
+    <img src="https://github.com/Jonny9904/KP-DataBinding/blob/master/assets/images/validation.png?raw=true" alt="Validation">
+  </div>
 </div>
-
-<div align="right">
-
-  ![Logo](../assets/images/validation.png)
-
-</div>
-
-
 
 ---
 
@@ -74,11 +71,10 @@ Peter Kurfer, Thomas Mildner
 
 ## Two-way vs. One-way databinding
 
-
 &rarr; different binding types are supported <br/>
 &rarr; choose binding type for suited use case <br/>
 
-One-way &#171; vs. &#187; Two-way 
+One-way &#171; vs. &#187; Two-way
 
 +++
 
@@ -109,7 +105,7 @@ One-way &#171; vs. &#187; Two-way
 
 ## Frameworks supporting databinding
 
-![Logo](../assets/images/logo_map.png)
+![Logo](assets/images/logo_map.png)
 
 ---
 
@@ -138,9 +134,10 @@ One-way &#171; vs. &#187; Two-way
 &rarr; will be compiled to Javascript </br> 
 
 +++
+
 TypeScript is Javascript plus some additional features </br>
 
-![Logo](../assets/images/TypeScriptSuper.png)
+![Logo](assets/images/typescriptSuper.png)
 
 +++
 
@@ -149,6 +146,7 @@ TypeScript is Javascript plus some additional features </br>
 
 +++
 ## First example of Typescript ...
+
 ```ts
 class Greeting { 
    greet():void { 
@@ -163,6 +161,7 @@ obj.greet();
 +++ 
 
 ## will be compiled to JavaScript as followed:
+
 ```js
 var Greeting = (function () {
    function Greeting() {
@@ -178,14 +177,16 @@ obj.greet()
 ```
 
 +++
+
 ## Variables and Compile Checks
 
 TypeScript:
+
 ```ts
-var name:string = "John"; 
+var name:string = "John";
 var score1:number = 50;
 var score2:number = 42.50
-var sum = score1 + score2 
+var sum = score1 + score2
 ```
 
 JavaScript:
@@ -200,7 +201,8 @@ Compile Error:
 var num:number = "hello"     // will result in a compilation error
 ```
 
-++
++++
+
 ## Functions
 
 ```ts
@@ -212,40 +214,44 @@ calculate_discount(1000)
 calculate_discount(1000,0.30) // call method without default parameter
 
 ```
-+++ 
+
++++
 
 ## Anonymous functions
 
 ```ts
-var res = function(a:number,b:number) { 
-   return a*b;  
-}; 
-console.log(res(12,2)) 
+var res = function(a:number,b:number) {
+   return a*b;
+};
+console.log(res(12,2))
 ```
+
 +++
 
 ## Lambda Expressions
 
 TypeScript:
+
 ```ts
-var foo = (x:number)=>10 + x 
-console.log(foo(100))      //outputs 110 
+var foo = (x:number)=>10 + x
+console.log(foo(100))      //outputs 110
 ```
 
 JavaScript:
+
 ```js
 var foo = function (x) { return 10 + x; };
 console.log(foo(100));      //outputs 110
 ```
+
 +++
 
 <!-- TODO -->
 Evtl noch Angular 2.0 Databinding zeigen? 
 
---- 
+---
 
 ## Vue.js
-
 
 ---
 
@@ -255,8 +261,8 @@ Evtl noch Angular 2.0 Databinding zeigen?
 
 ## Problems of databinding
 
---- 
+---
 
 ## Exercise
 
-![Exercise](../assets/images/exercise.png)
+![Exercise](assets/images/exercise.jpg)
