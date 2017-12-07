@@ -36,7 +36,7 @@ Peter Kurfer, Thomas Mildner
 ## Observer Pattern
 
 
-![Logo](../assets/images/observer.png)
+![Logo](assets/images/observer.png)
 
 +++
 
@@ -44,7 +44,7 @@ Peter Kurfer, Thomas Mildner
 
 <div align="center">
 
-![MVC](../assets/images/mvcConcept.png)
+![MVC](assets/images/mvcConcept.png)
 
 </div>
 +++ 
@@ -58,7 +58,7 @@ Peter Kurfer, Thomas Mildner
 
 <div align="right">
 
-  ![Logo](../assets/images/validation.png)
+  ![Logo](assets/images/validation.png)
 
 </div>
 
@@ -109,7 +109,7 @@ One-way &#171; vs. &#187; Two-way
 
 ## Frameworks supporting databinding
 
-![Logo](../assets/images/logo_map.png)
+![Logo](assets/images/logo_map.png)
 
 ---
 
@@ -138,9 +138,10 @@ One-way &#171; vs. &#187; Two-way
 &rarr; will be compiled to Javascript </br> 
 
 +++
+
 TypeScript is Javascript plus some additional features </br>
 
-![Logo](../assets/images/TypeScriptSuper.png)
+![Logo](assets/images/TypeScriptSuper.png)
 
 +++
 
@@ -149,6 +150,7 @@ TypeScript is Javascript plus some additional features </br>
 
 +++
 ## First example of Typescript ...
+
 ```ts
 class Greeting { 
    greet():void { 
@@ -163,6 +165,7 @@ obj.greet();
 +++ 
 
 ## will be compiled to JavaScript as followed:
+
 ```js
 var Greeting = (function () {
    function Greeting() {
@@ -200,7 +203,8 @@ Compile Error:
 var num:number = "hello"     // will result in a compilation error
 ```
 
-++
++++
+
 ## Functions
 
 ```ts
@@ -212,7 +216,8 @@ calculate_discount(1000)
 calculate_discount(1000,0.30) // call method without default parameter
 
 ```
-+++ 
+
++++
 
 ## Anonymous functions
 
@@ -222,21 +227,25 @@ var res = function(a:number,b:number) {
 }; 
 console.log(res(12,2)) 
 ```
+
 +++
 
 ## Lambda Expressions
 
 TypeScript:
+
 ```ts
 var foo = (x:number)=>10 + x 
 console.log(foo(100))      //outputs 110 
 ```
 
 JavaScript:
+
 ```js
 var foo = function (x) { return 10 + x; };
 console.log(foo(100));      //outputs 110
 ```
+
 +++
 
 <!-- TODO -->
@@ -259,4 +268,4 @@ Evtl noch Angular 2.0 Databinding zeigen?
 
 ## Exercise
 
-![Exercise](../assets/images/exercise.png)
+![Exercise](assets/images/exercise.png)
