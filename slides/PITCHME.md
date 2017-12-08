@@ -255,7 +255,43 @@ Evtl noch Angular 2.0 Databinding zeigen?
 
 ---
 
+## "Databinding" without vue.js
+
+```html
+
+
+```
+---
+
 ## Databinding in vue.js
+
+<div class="twocolumn">
+  <div>  
+```html
+  <div id="root"> 
+    <input type="text" v-model='message'>
+    <p>The value is {{message}}</p>
+  </div>  
+```
+  </div>
+  <div>
+   ```ts
+<script>
+   new Vue({
+    el: '#root',
+    data : {
+      message: 'test binding'
+    }  
+  })    
+  </script>
+```
+  </div>
+</div>
+
+![Logo](assets/images/testBinding.png)
+
+
+
 
 ---
 
