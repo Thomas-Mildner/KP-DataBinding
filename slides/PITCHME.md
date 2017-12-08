@@ -273,17 +273,16 @@ Evtl noch Angular 2.0 Databinding zeigen?
 ```
   
 ```ts
-<script>
    new Vue({
     el: '#root',
     data : {
       message: 'test binding'
     }  
   })    
-  </script>
+
 ```
 
-![Logo](assets/images/testBinding.png)
+![Logo](assets/images/testBinding.PNG)
 
 
 
