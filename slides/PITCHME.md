@@ -282,7 +282,7 @@ Evtl noch Angular 2.0 Databinding zeigen?
 
 ```
 
-![Logo](assets/images/testBinding.PNG)
+<img src="https://github.com/Jonny9904/KP-DataBinding/blob/master/assets/images/testBinding.png?raw=true" alt="Test Binding Demo">
 
 
 
