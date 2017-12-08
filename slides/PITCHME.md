@@ -253,9 +253,42 @@ Evtl noch Angular 2.0 Databinding zeigen?
 
 ## Vue.js
 
+<<<<<<< HEAD
+=======
+---
+
+## "Databinding" without vue.js
+
+```html
+
+
+```
+>>>>>>> slides-intro
 ---
 
 ## Databinding in vue.js
+
+```html
+  <div id="root"> 
+    <input type="text" v-model='message'>
+    <p>The value is {{message}}</p>
+  </div>  
+```
+  
+```ts
+   new Vue({
+    el: '#root',
+    data : {
+      message: 'test binding'
+    }  
+  })    
+
+```
+
+<img src="https://github.com/Jonny9904/KP-DataBinding/blob/master/assets/images/testBinding.png?raw=true" alt="Test Binding Demo">
+
+
+
 
 ---
 
