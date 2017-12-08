@@ -265,17 +265,14 @@ Evtl noch Angular 2.0 Databinding zeigen?
 
 ## Databinding in vue.js
 
-<div class="twocolumn">
-  <div>  
 ```html
   <div id="root"> 
     <input type="text" v-model='message'>
     <p>The value is {{message}}</p>
   </div>  
 ```
-  </div>
-  <div>
-   ```ts
+  
+```ts
 <script>
    new Vue({
     el: '#root',
@@ -285,8 +282,6 @@ Evtl noch Angular 2.0 Databinding zeigen?
   })    
   </script>
 ```
-  </div>
-</div>
 
 ![Logo](assets/images/testBinding.png)
 
