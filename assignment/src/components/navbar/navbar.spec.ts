@@ -26,15 +26,15 @@ describe('Navbar component', () => {
     Vue.use(VueRouter);
     directiveTest = new ComponentTest('<div><navbar></navbar><router-view>loading...</router-view></div>', { 'navbar': MockNavbarComponent });
 
-    let homeComponent = { template: '<div class="assignment-spec">Home</div>' };
+    let homeComponent = { template: '<div class="assignments-spec">Home</div>' };
     let aboutComponent = { template: '<div class="api-spec">About</div>' };
-    let listComponent = { template: '<div class="assignment">List</div>' };
+    let listComponent = { template: '<div class="assignments">List</div>' };
 
     router = new VueRouter({
       routes: [
         { path: '/', component: homeComponent },
         { path: '/api-spec', component: aboutComponent },
-        { path: '/assignment', component: listComponent }
+        { path: '/assignments', component: listComponent }
       ]
     });
   });
@@ -66,12 +66,12 @@ describe('Navbar component', () => {
     });
   });
 
-  describe('When clicking the assignment link', () => {
+  describe('When clicking the assignments link', () => {
     beforeEach(async () => {
       directiveTest.createComponent({ router: router });
 
       await directiveTest.execute((vm) => {
-        let anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/assignment"]');
+        let anchor = <HTMLAnchorElement>vm.$el.querySelector('ul.nav li a[href="#/assignments"]');
         anchor.click();
       });
     });

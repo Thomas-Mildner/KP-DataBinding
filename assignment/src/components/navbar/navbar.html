@@ -3,4 +3,15 @@
   <md-button v-for="link in links" :key="link.name" @click.native="$router.push(link.path)">
     {{link.name}}
   </md-button>
+
+
+  <md-menu md-align-trigger>
+    <md-button md-menu-trigger>Assignments</md-button>
+
+    <md-menu-content>
+      <md-menu-item v-for="assignmentLink in assignmentLinks" :key="assignmentLink.name" @click.native="$router.push(assignmentLink.path)">
+        {{assignmentLink.name}}
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
 </md-toolbar>

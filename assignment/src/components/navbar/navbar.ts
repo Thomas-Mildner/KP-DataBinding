@@ -22,8 +22,16 @@ export class NavbarComponent extends Vue {
   links: Link[] = [
     new Link('Lecture notes', '/lecture-notes'),
     new Link('Assignment spec', '/'),
-    new Link('API-Spec', '/api-spec'),
-    new Link('Assignment', '/assignment')
+    new Link('API-Spec', '/api-spec')
+  ];
+
+  assignmentLinks: Link[] = [
+    new Link('Part 1', '/assignments/part1'),
+    new Link('Part 1 - solution', '/assignments/part1-solution'),
+    new Link('Part 2', '/assignments/part2'),
+    new Link('Part 2 - solution', '/assignments/part2-solution'),
+    new Link('Part 3', '/assignments/part3'),
+    new Link('Part 3 - solution', '/assignments/part3-solution')
   ];
 
   @Watch('$route.path')

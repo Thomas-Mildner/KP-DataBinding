@@ -1,12 +1,12 @@
 import {Component, Vue} from 'vue-property-decorator';
 
-import './assignment.scss';
+import './part3.scss';
 
 @Component({
-  template: require('./assignment.html'),
+  template: require('./part3.html'),
   components: {}
 })
-export class AssignmentComponent extends Vue {
+export class AssignmentPart3Component extends Vue {
 
   private url = 'https://icndb.kns-it.de/api/v1/jokes?page_size=';
 

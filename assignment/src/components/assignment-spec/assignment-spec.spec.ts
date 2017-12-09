@@ -6,7 +6,7 @@ describe('Home component', () => {
   let directiveTest: ComponentTest;
 
   beforeEach(() => {
-    directiveTest = new ComponentTest('<div><assignment-spec></assignment-spec></div>', { 'home': AssignmentSpecComponent });
+    directiveTest = new ComponentTest('<div><assignments-spec></assignments-spec></div>', { 'home': AssignmentSpecComponent });
   });
 
   it('should render correct contents', async () => {

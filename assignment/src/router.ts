@@ -4,17 +4,24 @@ import {makeHot, reload} from './util/hot-reload';
 
 const assignmentSpecComponent = () => import('./components/assignment-spec').then(({AssignmentSpecComponent}) => AssignmentSpecComponent);
 const apiSpecComponent = () => import('./components/api-spec').then(({ApiSpecComponent}) => ApiSpecComponent);
-const assignmentComponent = () => import('./components/assignment').then(({AssignmentComponent: AssignmentComponent}) => AssignmentComponent);
 const lectureNotesComponent = () => import('./components/lecture-notes').then(({LectureNotesComponent: LectureNotesComponent}) => LectureNotesComponent);
-// const homeComponent = () => import(/* webpackChunkName: 'assignment-spec' */'./components/assignment-spec').then(({ AssignmentSpecComponent }) => AssignmentSpecComponent);
-// const aboutComponent = () => import(/* webpackChunkName: 'api-spec' */'./components/api-spec').then(({ ApiSpecComponent }) => ApiSpecComponent);
-// const listComponent = () => import(/* webpackChunkName: 'assignment' */'./components/assignment').then(({ AssignmentComponent }) => AssignmentComponent);
+const assignmentPart1Component = () => import('./components/assignments/part1/index').then(({AssignmentPart1Component: AssignmentPart1Component}) => AssignmentPart1Component);
+const assignmentPart1SolutionComponent = () => import('./components/assignments/part1_solution/index').then(({AssignmentPart1SolutionComponent: AssignmentPart1SolutionComponent}) => AssignmentPart1SolutionComponent);
+const assignmentPart2Component = () => import('./components/assignments/part2/index').then(({AssignmentPart2Component: AssignmentPart2Component}) => AssignmentPart2Component);
+const assignmentPart2SolutionComponent = () => import('./components/assignments/part2_solution/index').then(({AssignmentPart2SolutionComponent: AssignmentPart2SolutionComponent}) => AssignmentPart2SolutionComponent);
+const assignmentPart3Component = () => import('./components/assignments/part3/index').then(({AssignmentPart3Component: AssignmentPart3Component}) => AssignmentPart3Component);
+const assignmentPart3SolutionComponent = () => import('./components/assignments/part3_solution/index').then(({AssignmentPart3SolutionComponent: AssignmentPart3SolutionComponent}) => AssignmentPart3SolutionComponent);
 
 if (process.env.ENV === 'development' && module.hot) {
-  const assignmentSpecModuleId = './components/assignment-spec';
+  const assignmentSpecModuleId = './components/assignments-spec';
   const apiSpecModuleId = './components/api-spec';
-  const assignmentModuleId = './components/assignment';
   const lectureNotesModuleId = './components/lecture-notes';
+  const assignmentPart1ModuleId = './components/assignments/part1';
+  const assignmentPart1SolutionModuleId = './components/assignments/part1_solution';
+  const assignmentPart2ModuleId = './components/assignments/part2';
+  const assignmentPart2SolutionModuleId = './components/assignments/part2_solution';
+  const assignmentPart3ModuleId = './components/assignments/part3';
+  const assignmentPart3SolutionModuleId = './components/assignments/part3_solution';
 
   // first arguments for `module.hot.accept` and `require` methods have to be static strings
   // see https://github.com/webpack/webpack/issues/5668
@@ -24,11 +31,26 @@ if (process.env.ENV === 'development' && module.hot) {
   makeHot(apiSpecModuleId, apiSpecComponent,
     module.hot.accept('./components/api-spec', () => reload(apiSpecModuleId, (<any>require('./components/api-spec')).ApiSpecComponent)));
 
-  makeHot(assignmentModuleId, assignmentComponent,
-    module.hot.accept('./components/assignment', () => reload(assignmentModuleId, (<any>require('./components/assignment')).AssignmentComponent)));
-
   makeHot(lectureNotesModuleId, lectureNotesComponent,
     module.hot.accept('./components/lecture-notes', () => reload(lectureNotesModuleId, (<any>require('./components/lecture-notes')).LectureNotesComponent)));
+
+  makeHot(assignmentPart1ModuleId, assignmentPart3Component,
+    module.hot.accept('./components/assignments/part1', () => reload(assignmentPart1ModuleId, (<any>require('./components/assignments/part1/index')).AssignmentPart1Component)));
+
+  makeHot(assignmentPart1SolutionModuleId, assignmentPart3SolutionComponent,
+    module.hot.accept('./components/assignments/part1_solution', () => reload(assignmentPart1SolutionModuleId, (<any>require('./components/assignments/part1_solution/index')).AssignmentPart1SolutionComponent)));
+
+  makeHot(assignmentPart2ModuleId, assignmentPart2Component,
+    module.hot.accept('./components/assignments/part2', () => reload(assignmentPart2ModuleId, (<any>require('./components/assignments/part2/index')).AssignmentPart2Component)));
+
+  makeHot(assignmentPart2SolutionModuleId, assignmentPart2SolutionComponent,
+    module.hot.accept('./components/assignments/part2_solution', () => reload(assignmentPart2SolutionModuleId, (<any>require('./components/assignments/part2_solution/index')).AssignmentPart2SolutionComponent)));
+
+  makeHot(assignmentPart3ModuleId, assignmentPart3Component,
+    module.hot.accept('./components/assignments/part3', () => reload(assignmentPart3ModuleId, (<any>require('./components/assignments/part3/index')).AssignmentPart3Component)));
+
+  makeHot(assignmentPart3SolutionModuleId, assignmentPart3SolutionComponent,
+    module.hot.accept('./components/assignments/part3_solution', () => reload(assignmentPart3SolutionModuleId, (<any>require('./components/assignments/part3_solution/index')).AssignmentPart3SolutionComponent)));
 }
 
 Vue.use(VueRouter);
@@ -43,12 +65,32 @@ export const createRoutes: () => RouteConfig[] = () => [
     component: apiSpecComponent,
   },
   {
-    path: '/assignment',
-    component: assignmentComponent,
-  },
-  {
     path: '/lecture-notes',
     component: lectureNotesComponent
+  },
+  {
+    path: '/assignments/part1',
+    component: assignmentPart1Component,
+  },
+  {
+    path: '/assignments/part1-solution',
+    component: assignmentPart1SolutionComponent,
+  },
+  {
+    path: '/assignments/part2',
+    component: assignmentPart2Component,
+  },
+  {
+    path: '/assignments/part2-solution',
+    component: assignmentPart2SolutionComponent,
+  },
+  {
+    path: '/assignments/part3',
+    component: assignmentPart3Component,
+  },
+  {
+    path: '/assignments/part3-solution',
+    component: assignmentPart3SolutionComponent,
   }
 ];
 
