@@ -1,4 +1,4 @@
-@title[Einleitung]
+@title[Introduction]
 
 # Two-way data binding in MVC
 
@@ -241,32 +241,17 @@ TypeScript is Javascript plus some additional features
 
 ```ts
 class Greeting {
-   greet():void {
-      console.log("Hello World!!!")
-   }
+    greet(): void {
+        console.log("Hello World!!!")
+    }
 }
 
-var obj = new Greeting();
-obj.greet();
+let g = new Greeting();
+g.greet();
 ```
 
-+++
-
-## will be compiled to JavaScript as followed
-
-```js
-var Greeting = (function () {
-   function Greeting() {
-   }
-   Greeting.prototype.greet = function () {
-      console.log("Hello World!!!");
-   };
-  return Greeting;
-}());
-
-var obj = new Greeting();
-obj.greet()
-```
+@[1-5](Declare class `Greeting`)
+@[7-8](Instantiate class `Greeting` and call method `greet()`)
 
 +++
 
@@ -275,49 +260,49 @@ obj.greet()
 TypeScript:
 
 ```ts
-var name:string = "John";
-var score1:number = 50;
-var score2:number = 42.50
-var sum = score1 + score2
-```
-
-JavaScript:
-
-```js
-var name = "John";
-var score1 = 50;
-var score2 = 42.50;
-var sum = score1 + score2;
+let firstName: string = "John";
+let score1: number = 50;
+let score2: number = 42.50
+let sum = score1 + score2
 ```
 
 Compile Error:
 
-```js
-var num:number = "hello"     // will result in a compilation error
+```ts
+let num: number = "hello"
 ```
+
+&#x26a1; Compiler error because `"hello"` is no `number`
 
 +++
 
 ## Functions
 
 ```ts
-function calculate_discount(price:number,rate:number = 0.50) {
-   var discount = price * rate;
-   console.log("Discount Amount: ",discount);
+function calc_discount(price: number, rate: number = 0.50): Unit {
+    let discount = price * rate;
+    console.log("Discount Amount: ", discount);
 }
-calculate_discount(1000)
-calculate_discount(1000,0.30) // call method without default parameter
+
+calc_discount(1000)
+
+// call method without default parameter
+calc_discount(1000, 0.30)
 ```
+
+@[1-4](Declaring a new function with default parameter `rate`)
+@[6](Calling function with default parameter)
+@[9](Calling function with override of default parameter)
 
 +++
 
 ## Anonymous functions
 
 ```ts
-var res = function(a:number,b:number) {
-   return a*b;
+let res = function (a: number, b: number) {
+    return a * b;
 };
-console.log(res(12,2))
+console.log(res(12, 2))
 ```
 
 +++
@@ -327,15 +312,8 @@ console.log(res(12,2))
 TypeScript:
 
 ```ts
-var foo = (x:number)=>10 + x
+let foo = (x: number) => 10 + x;
 console.log(foo(100))      //outputs 110
-```
-
-JavaScript:
-
-```js
-var foo = function (x) { return 10 + x; };
-console.log(foo(100));      //outputs 110
 ```
 
 ---
@@ -344,7 +322,7 @@ console.log(foo(100));      //outputs 110
 
 ---
 
-## "Databinding" without vue.js
+## "Databinding" without Vue.js
 
 Modify a HTML element from Vanilla JS:
 
@@ -358,32 +336,67 @@ Modify a HTML element from Vanilla JS:
 
 ---
 
-## Databinding in vue.js
+## Databinding in Vue.js
+
+![Databinding in Vue.js - schema](assets/images/vuejs_binding.png)
+
+[Quelle](https://vuejs.org/v2/guide/reactivity.html)
+
++++
 
 ```html
-  <div id="root">
-    <input type="text" v-model='message'>
-    <p>The value is {{message}}</p>
-  </div>
-```
+<div id="root">
+  <input type="text" v-model='message'>
+  <p>The value is {{message}}</p>
+</div>
 
-```js
-   new Vue({
+<script>
+new Vue({
     el: '#root',
-    data : {
-      message: 'test binding'
+    data: {
+        message: 'test binding'
     }
-  })
+})
+</script>
 ```
 
-![Test Binding Demo](assets/images/testBinding.png)
-
----
-
-## Problems of databinding
+@[1-4](Declare binding with `v-model` or by using a `{{template-string}}` directly in HTML)
+@[6-13](Instantiate new `Vue` and declare a property `message` within the `data` property)
 
 ---
 
 ## Exercise
 
 ![Exercise](assets/images/exercise.jpg)
+
+---
+
+## Edge cases of databinding in Vue.js
+
++++
+
+### Dynamic properties
+
+Vue.js does recognize new properties of objects (or when a property is deleted), when the instance is already initialized.
+
+```js
+let vm = new Vue({
+  data: {
+    a: 1
+  }
+});
+
+vm.b = 2
+```
+
++++
+
+### Dynamic properties
+
+If required there's a "hack" to resolve the problem:
+
+```js
+Vue.set(vm.someObject, 'b', 2)
+```
+
+_Side note: because TypeScript enforces strict typing this edge case does not really matter for TypeScript (except you're using `any` but why should you &#x1f609; )._
