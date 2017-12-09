@@ -23,37 +23,35 @@ Peter Kurfer, Thomas Mildner
 * Problems of databinding
 * Exercise
 
-
 ---
+
 ## What is data binding?
 
-&rarr; bind UI element to an application model </br>
-&rarr; Software Design Pattern <br/>
-&rarr; Observer Pattern works often as underlying binding mechanism <br/>
+&rarr; bind UI element to an application model
 
+&rarr; Software Design Pattern
+
+&rarr; Observer Pattern works often as underlying binding mechanism
 
 +++
+
 ## Observer Pattern
 
-
-![Logo](assets/images/observer.jpg)
+![Logo](assets/images/observer.png)
 
 +++
 
 ## MVC Concept
 
-<div align="center">
-
 ![MVC](assets/images/mvcConcept.png)
 
-</div>
-+++ 
++++
 
 ## Challenges for data binding
 
 <div class="twocolumn">
   <div>
-    &rarr; input validation </br> 
+    &rarr; input validation </br>
     &rarr; data type mapping
   </div>
   <div>
@@ -65,14 +63,13 @@ Peter Kurfer, Thomas Mildner
 
 ## History and concepts
 
-
-
 ---
 
 ## Two-way vs. One-way databinding
 
-&rarr; different binding types are supported <br/>
-&rarr; choose binding type for suited use case <br/>
+&rarr; different binding types are supported
+
+&rarr; choose binding type for suited use case
 
 One-way &#171; vs. &#187; Two-way
 
@@ -87,19 +84,76 @@ One-way &#171; vs. &#187; Two-way
 +++
 
 ## Pro and contra One-way databinding
-<table style="border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto"><tr><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Pro</th><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Contra</th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">only one direction of data flow</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">No automatic adaptation of data in the model, <br>other components, the UI</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">easy to debug</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">invalid states in application</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">no gui validation / user input validation<br>required</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center"></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center"></td></tr></table>
+
+<table class="default">
+  <tr>
+    <th class="default">Pro</th>
+    <th class="default">Contra</th>
+  </tr>
+  <tr>
+    <td class="odd">
+      only one direction of data flow
+    </td>
+    <td class="odd">
+      No automatic adaptation of data in the model, other components, the UI
+    </td>
+  </tr>
+  <tr>
+    <td class="even">
+      easy to debug
+    </td>
+    <td class="even">
+      invalid states in application
+    </td>
+  </tr>
+  <tr>
+    <td class="odd">
+      no gui validation / user input validation required
+    </td>
+    <td class="odd"></td>
+  </tr>
+</table>
+
 +++
 
 ## Two-way databinding
 
-&rarr; scope variable will change its value every time the model is assigned to a different value </br>
+&rarr; scope variable will change its value every time the model is assigned to a different value
 
 &rarr; bind the data from model to view and view to model
 
 +++
 
 ## Pro and contra Two-way databinding
-<table style="border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto"><tr><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Pro</th><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Contra</th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">bind multiple gui elements to single source <br>of truth in model</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">changes in model will cause a change in gui<br>--&gt; Performance issue</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">data consistency guaranteed</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">input validation / data type matching</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">changes in data will be automatically added <br>to gui --&gt; write less code for display logic</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">data manipulation / parsing works not very well<br>--&gt; Performance issue</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center"></td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center"></td></tr></table>
+
+<table class="default">
+  <tr>
+    <th class="default">Pro</th>
+    <th class="default">Contra</th>
+  </tr>
+  <tr>
+    <td class="odd">
+      bind multiple gui elements to single source of truth in model
+    </td>
+    <td class="odd">
+      changes in model will cause a change in gui<br/>
+      &rarr; Performance issue
+    </td>
+  </tr>
+  <tr>
+    <td class="even">data consistency guaranteed</td>
+    <td class="even">input validation / data type matching</td>
+  </tr>
+  <tr>
+    <td class="odd">
+      changes in data will be automatically added  to gui &rarr; write less code for display logic
+    </td>
+    <td class="odd">
+      data manipulation / parsing works not very well<br/>
+      &rarr; Performance issue
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -111,56 +165,94 @@ One-way &#171; vs. &#187; Two-way
 
 ## TypeScript
 
-&rarr; statically typed language </br> 
-&rarr; compiles to plain javascript </br> 
-&rarr; popular JS framework <b>Angular 2.0</b> </br> 
+&rarr; statically typed language
+
+&rarr; compiles to plain javascript
+
+&rarr; popular JS framework **Angular 2.0**
 
 +++
 
 ## Problems of Javascript
 
-&rarr; JS first developed as a language for client-side </br>
-&rarr; Node.js marked JS as an emerging server-side technology </br>  
-&rarr; JS difficult to maintain and not reusable</br> 
-&rarr; no Object Orientation, no strong type checks, no compiling checks </br> 
+&rarr; JS first developed as a language for client-side
+
+&rarr; Node.js marked JS as an emerging server-side technology
+
+&rarr; JS difficult to maintain and not reusable
+
+&rarr; no Object Orientation, no strong type checks, no compiling checks
 
 +++
 
 ## Solution = TypeScript
 
-&rarr; designed by Andrers Hejlsberg (Designer of C# at Microsoft) </br> 
-&rarr; strongly typed, object orientated and compiled language </br> 
-&rarr; TypeScript is a superset of Javascript </br> 
-&rarr; will be compiled to Javascript </br> 
+&rarr; designed by Andrers Hejlsberg (Designer of C# at Microsoft)
+
+&rarr; strongly typed, object orientated and compiled language
+
+&rarr; TypeScript is a superset of Javascript
+
+&rarr; will be compiled to Javascript
 
 +++
 
-TypeScript is Javascript plus some additional features </br>
+TypeScript is Javascript plus some additional features
 
 ![Logo](assets/images/typescriptSuper.png)
 
 +++
 
 ## Features of TypeScript
-<table style="border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto"><tr><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Feature</th><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;text-align:center">Usage</th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">TypeScript is just JavaScript</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">Only knowledge of JS required</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">Supports other JS Libraries</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">can be consumed of any JS Code. Can reuse all existing<br>JS frameworks, tools and libraries</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">JavaScript is TypeScript</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#D2E4FC;text-align:center">Any &lt;b&gt;.js&lt;/b&gt; file can be renamed to &lt;b&gt;.ts&lt;/b&gt; and <br>compiled with other TypeScript Files</td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">TypeScript is portable</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;text-align:center">Portable accross multiple browsers, devices and operating systems.<br>&amp;rarr; runs whereever JS runs</td></tr></table>
+
+<table class="default">
+  <tr>
+    <th class="default">Feature</th>
+    <th class="default">Usage</th>
+  </tr>
+  <tr>
+    <td class="odd">TypeScript is just JavaScript</td>
+    <td class="odd">Only knowledge of JS required</td>
+  </tr>
+  <tr>
+    <td class="even">Supports other JS Libraries</td>
+    <td class="even">
+      can be consumed of any JS Code. Can reuse all existing<br>
+      JS frameworks, tools and libraries
+    </td>
+  </tr>
+  <tr>
+    <td class="odd">JavaScript is TypeScript</td>
+    <td class="odd">
+      Any &lt;b&gt;.js&lt;/b&gt; file can be renamed to &lt;b&gt;.ts&lt;/b&gt; and compiled with other TypeScript Files
+    </td>
+  </tr>
+  <tr>
+    <td class="even">TypeScript is portable</td>
+    <td class="even">
+      Portable accross multiple browsers, devices and operating systems. &rarr; runs whereever JS runs
+    </td>
+  </tr>
+</table>
 
 +++
+
 ## First example of Typescript ...
 
 ```ts
-class Greeting { 
-   greet():void { 
-      console.log("Hello World!!!") 
-   } 
-} 
+class Greeting {
+   greet():void {
+      console.log("Hello World!!!")
+   }
+}
 
-var obj = new Greeting(); 
+var obj = new Greeting();
 obj.greet();
 ```
 
-+++ 
++++
 
-## will be compiled to JavaScript as followed:
+## will be compiled to JavaScript as followed
 
 ```js
 var Greeting = (function () {
@@ -169,7 +261,7 @@ var Greeting = (function () {
    Greeting.prototype.greet = function () {
       console.log("Hello World!!!");
    };
-	return Greeting;
+  return Greeting;
 }());
 
 var obj = new Greeting();
@@ -190,13 +282,16 @@ var sum = score1 + score2
 ```
 
 JavaScript:
+
 ```js
 var name = "John";
 var score1 = 50;
 var score2 = 42.50;
 var sum = score1 + score2;
 ```
+
 Compile Error:
+
 ```js
 var num:number = "hello"     // will result in a compilation error
 ```
@@ -206,13 +301,12 @@ var num:number = "hello"     // will result in a compilation error
 ## Functions
 
 ```ts
-function calculate_discount(price:number,rate:number = 0.50) { 
-   var discount = price * rate; 
-   console.log("Discount Amount: ",discount); 
-} 
-calculate_discount(1000) 
+function calculate_discount(price:number,rate:number = 0.50) {
+   var discount = price * rate;
+   console.log("Discount Amount: ",discount);
+}
+calculate_discount(1000)
 calculate_discount(1000,0.30) // call method without default parameter
-
 ```
 
 +++
@@ -244,51 +338,45 @@ var foo = function (x) { return 10 + x; };
 console.log(foo(100));      //outputs 110
 ```
 
-+++
-
-<!-- TODO -->
-Evtl noch Angular 2.0 Databinding zeigen? 
-
 ---
 
 ## Vue.js
 
-<<<<<<< HEAD
-=======
 ---
 
 ## "Databinding" without vue.js
 
+Modify a HTML element from Vanilla JS:
+
 ```html
-
-
+<p id="test-id">Nothing to say</p>
+<script>
+    let pElem = document.getElementById("test-id");
+    pElem.innerHTML = "Hello from JS";
+</script>
 ```
->>>>>>> slides-intro
+
 ---
 
 ## Databinding in vue.js
 
 ```html
-  <div id="root"> 
+  <div id="root">
     <input type="text" v-model='message'>
     <p>The value is {{message}}</p>
-  </div>  
+  </div>
 ```
-  
-```ts
+
+```js
    new Vue({
     el: '#root',
     data : {
       message: 'test binding'
-    }  
-  })    
-
+    }
+  })
 ```
 
-<img src="https://github.com/Jonny9904/KP-DataBinding/blob/master/assets/images/testBinding.png?raw=true" alt="Test Binding Demo">
-
-
-
+![Test Binding Demo](assets/images/testBinding.png)
 
 ---
 

@@ -6,7 +6,8 @@
   color: gray;
 }
 
-span.byline, span.aside {
+span.byline,
+span.aside {
   color: #bbb;
 }
 
@@ -53,7 +54,7 @@ span.aside {
 }
 
 .reveal code {
-	font-family: Hasklig, "Fira Code", monospace
+  font-family: Hasklig, "Fira Code", monospace
 }
 
 .reveal table {
@@ -74,11 +75,65 @@ span.aside {
   letter-spacing: normal;
   text-transform: none;
   text-shadow: none;
-word-wrap: break-word; }
+  word-wrap: break-word;
+}
 
 .twocolumn {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
-  text-align: left;
+  text-align: center;
+}
+
+table.default {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-color: #999;
+  margin: 0px auto;
+  position: relative;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+th.default {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 0px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #999;
+  color: #fff;
+  background-color: #26ADE4;
+  text-align: center
+}
+
+td.odd {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 0px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #999;
+  color: #444;
+  text-align: center;
+  background-color: #D2E4FC;
+}
+
+td.even {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 0px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #999;
+  color: #444;
+  text-align: center;
+  background-color: #F7FDFA;
 }
