@@ -1,1 +1,51 @@
-<h1>Assignment part 1</h1>
+<md-tabs>
+  <md-tab id="form" class="form-container" md-label="Input-Binding">
+    <h3>Enter your favorite actor:</h3>
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>First name</label>
+        <md-input maxlength="20"></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>Last name</label>
+        <md-input maxlength="20"></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>Born:</label>
+        <md-input type="date"></md-input>
+      </md-input-container>
+      <md-chips style="margin-top: 20px" md-input-placeholder="Add favorite movies"></md-chips>
+      <md-input-container>
+          <label>Image link:</label>
+          <md-input maxlength="200"></md-input>
+        </md-input-container>
+    </form>
+    <md-button class="md-fab md-fab-bottom-right">
+        <md-icon>add</md-icon>
+      </md-button>
+  </md-tab>
+
+  <md-tab id="output" md-label="Element-Binding">
+      <div class="assignment-part3-solution-container">
+        <md-layout md-gutter>
+          <md-layout>
+            <md-card class="actor-card" md-with-hover>
+              <md-card-media>
+                  <img src="/assets/img/chuck_norris.jpg" alt="Chuck Norris">
+              </md-card-media>
+              <md-card-header>
+                <div class="md-title">Actor name goes here</div>
+              </md-card-header>
+              <md-card-content>
+                <p><strong>Born:</strong></p>
+                <p><strong>Favorite movies:</strong></p>
+                <md-list>
+                  <md-list-item>favorite movies are going here</md-list-item>
+                </md-list>
+              </md-card-content>
+            </md-card>
+          </md-layout>
+        </md-layout>
+      </div>
+  </md-tab>
+</md-tabs>

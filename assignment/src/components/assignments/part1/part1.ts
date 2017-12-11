@@ -1,4 +1,5 @@
-import {Component, Vue} from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
+import { Actor } from './model/actor';
 
 import './part1.scss';
 
@@ -7,12 +8,17 @@ import './part1.scss';
 })
 export class AssignmentPart1Component extends Vue {
 
+  /* initialize with empty array to avoid undefined errors */
+  favoriteActors: Actor[] = [];
+  currentInputActor: Actor;
+
   /**
    * Default constructor
    * super() call is mandatory
    */
   constructor() {
     super();
+    this.currentInputActor = new Actor();
   }
 
   /**

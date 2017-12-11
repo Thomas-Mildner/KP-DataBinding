@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { Person } from './model/person';
-import { Observer, Watcher } from './model/observer';
+import { Observer } from './model/observer';
 
 import './part3.scss';
 
