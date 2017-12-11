@@ -3,6 +3,9 @@
 ## Agenda
 
 * What is data binding?
+* Observer Pattern
+* MVC Pattern
+* Challenges for data binding
 * Two-way vs. One-way data binding
 * Frameworks supporting data binding
 * Introduction to TypeScript
@@ -18,7 +21,7 @@
 First of all, we would like to define the term data binding and explain the principle behind it.
 Most applications are separated in different application layer. Mostly exists one gui(Graphical User Interface) Layer which has the responsibility for the gui display. There is also a layer for the application logic and a data model layer. This typical architecture is called 3-tier architecture. In the following picture is an application splitted in the three typical tiers. The presentation layer are various components which displays the gui components and handles the user interaction. The second tier is called application layer and is managing the business logic. This layer is responsible for the behavior of the application. This includes the process flow logic, computations and control of the data. The last layer is called data layer. It`s main point is to manage the persistence of the data, including loading and storing the data in a persistence way.
 
-![ThreeTierArchitecture](/assets/images/threeTierApplication.gif)
+![ThreeTierArchitecture](/assets/images/threetierlayers.png)
 
 The main task for data binding is to bind an UI element to an application model. The value, which is displayed to the user is bound to a data container in the application logic. Changes requested from a user are also triggered in the application logic to handle the new data. This is a common software design pattern. Most data binding frameworks implemented this mechanism with an Observer pattern, which is also a common and well-known software design pattern. The Observer principle is working often as an underlying binding mechanism.
 
@@ -29,6 +32,18 @@ This short paragraph represents a quick repetition of the Observer pattern. If y
 
 The Observer pattern is a software design pattern defining a one-to-many dependency between objects. When one object is changes state, all its dependents are notified and updated automatically. This technique is often used in other software design patterns like the MVC (Model-View-Controller) concept. The watched object is called the subject and registers themselves as an Observer when they are created. Whenever the subject changes, it broadcasts to all registered Observers that it has changed. Observers may pull only the information they needed from the subject, but in most cases, they are fully notified from the Observer.
 This mechanism allows to split the view part of an application and the application logic. An object in the business logic layer is registered as an Observer and all gui components can register themselves by the Observer. If one part is changing the state of the object in the application layer, all registered gui components will be notified and can update their states in the UI. This ensures a synchronous state application widely. Because of these reasons many gui frameworks and concepts has implemented the Observer pattern.
+
+## MVC Pattern
+
+The Model View Controller (MVC) Pattern is a software architectural pattern for implementing user interfaces. It divides the application into three interconnected parts. 
+* Model - the model is representing an object carrying data. It can also have logic to update controller if its data changes.
+* View - the View represents the visualization of the data the model contains
+* Controller -  the Controller acts on both model and view. It controls the data flow into model objects and updates the view whenever the data changes. It is the link between model and view and keeps the view and model separate.
+
+![MVCPattern](/assets/images/mvcConcept.png)
+
+The MVC pattern offers architectural advantages over standard JavaScript - it helps the developer to write a better organized, well separated application code. This pattern is highly tested and can be used for any programming language that includes a user interface.
+The persistence of the data is not part of the pattern and could be solved with some different implementations. For example, the controller can store the data in the model and persistence layer, or the model works with its own persistence strategy.
 
 ## Challenges for data binding
 
