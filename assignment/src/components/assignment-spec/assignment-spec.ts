@@ -20,7 +20,7 @@ export class AssignmentSpecComponent extends MarkedBaseComponent {
    */
   async mounted() {
     /* async call to get assignment spec rendered as HTML by marked */
-    this.compiledMarkdown = await this.getMarkedText('/assets/assignment/spec.md');
+    this.compiledMarkdown = await this.getMarkedText('/assets/AssignmentSpec.md');
   }
 
 }

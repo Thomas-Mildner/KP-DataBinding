@@ -71,6 +71,9 @@ let config = {
     }, {
       from: './../LectureNotes.md',
       to: './assets/LectureNotes.md'
+    }, {
+      from: './../AssignmentSpec.md',
+      to: './assets/AssignmentSpec.md'
     }]),
     new ExtractTextPlugin("main.css")
   ]

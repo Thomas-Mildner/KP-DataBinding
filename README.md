@@ -6,7 +6,7 @@
 * Vue.js
 * Docker + Vue.js CLI + VSCode/Atom/vim/...
 
-# Lecture - Agenda
+## Lecture - Agenda
 
 * What is data binding and how to use it
 * History and concepts of databinding (two-way and one-way)
@@ -15,18 +15,22 @@
 * Introduction to Vue.js (also as deep as required for the exercise)
 * Problems and stumbling blocks of databinding
 
-# Exercise
+[See the lecture notes here](./LectureNotes.md)
 
-## Part 1
+## Assignment
+
+[Read the spec here](./AssignmentSpec.md)
+
+### Part 1
 
 * bind an object to a gui with vue.js techniques
 
-## Part 2
+### Part 2
 
 * ICNDB-API ![Homepage](http://www.icndb.com/)
 * Display a different count of jokes
 * Replace the first and lastname in all displayed jokes at once with data binding (performance)
 
-## Part 3
+### Part 3
 
 * implement an own observer for gui data binding
