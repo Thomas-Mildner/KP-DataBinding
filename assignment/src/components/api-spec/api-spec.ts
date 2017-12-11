@@ -12,19 +12,14 @@ import jsonApi from '../../assets/swagger/swagger.json';
 })
 export class ApiSpecComponent extends Vue {
 
-  protected axios;
-  protected logger: Logger;
-  jsonApi = {};
-  queryParams = '';
-  headers = '';
+  jsonApi: any;
 
   constructor() {
     super();
-    this.axios = axios;
+    /* assign loaded JSON object to the API */
     this.jsonApi = jsonApi;
   }
 
   mounted() {
-    if (!this.logger) this.logger = new Logger();
   }
 }

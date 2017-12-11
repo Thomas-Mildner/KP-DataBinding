@@ -6,10 +6,18 @@ import './part1.scss';
   template: require('./part1.html')
 })
 export class AssignmentPart1Component extends Vue {
+
+  /**
+   * Default constructor
+   * super() call is mandatory
+   */
   constructor() {
     super();
   }
 
+  /**
+   * Called after the instance has been mounted
+   */
   mounted() {
 
   }

@@ -8,13 +8,18 @@ import {MarkedBaseComponent} from '../marked-base-component';
 })
 export class AssignmentSpecComponent extends MarkedBaseComponent {
 
+  /* default value to avoid undefined exceptions */
   compiledMarkdown: string = '';
 
   constructor() {
     super();
   }
 
+  /**
+   * mounted method is called when the view is rendered completely
+   */
   async mounted() {
+    /* async call to get assignment spec rendered as HTML by marked */
     this.compiledMarkdown = await this.getMarkedText('/assets/assignment/spec.md');
   }
 

@@ -9,8 +9,8 @@ import './part3.scss';
 })
 export class AssignmentPart3SolutionComponent extends Vue {
 
-  private personObserver: Observer;
-  person: Person;
+  private personObserver: Observer<Person>;
+  private person: Person;
 
   constructor() {
     super();
@@ -20,7 +20,8 @@ export class AssignmentPart3SolutionComponent extends Vue {
 
   mounted() {
     this.personObserver.addModelBinding('guid', 'guid');
-    this.personObserver.addDOMBinding('firstName', 'firstNameInput', 'firstName');
+    this.personObserver.addDOMBinding('firstName', 'firstNameInput');
+    this.personObserver.addModelBinding('firstName');
   }
 
   updatePersonGuid() {

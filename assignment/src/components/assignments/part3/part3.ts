@@ -10,12 +10,17 @@ export class AssignmentPart3Component extends Vue {
 
   private url = 'https://icndb.kns-it.de/api/v1/jokes?page_size=';
 
+  /**
+   * Default constructor
+   * super() call is mandatory
+   */
   constructor() {
     super();
   }
 
+  /**
+   * Called after the instance has been mounted
+   */
   mounted() {
-    this.$nextTick(() => {
-    });
   }
 }
