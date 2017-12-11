@@ -10,8 +10,8 @@ Peter Kurfer, Thomas Mildner
 
 * What is data binding?
 * History and concepts
-* Two-way vs. One-way databinding
-* Frameworks supporting databinding
+* Two-way vs. One-way data binding
+* Frameworks supporting data binding
 
 +++
 
@@ -19,9 +19,9 @@ Peter Kurfer, Thomas Mildner
 
 * Introduction to TypeScript
 * Introduction Vue.js
-* Databinding in Vue.js
-* Problems of databinding
+* Data binding in Vue.js
 * Exercise
+* Edge cases
 
 ---
 
@@ -65,7 +65,7 @@ Peter Kurfer, Thomas Mildner
 
 ---
 
-## Two-way vs. One-way databinding
+## Two-way vs. One-way data binding
 
 &rarr; different binding types are supported
 
@@ -75,7 +75,7 @@ One-way &#171; vs. &#187; Two-way
 
 +++
 
-## One-way databinding
+## One-way data binding
 
 &rarr; scope variable in HTML will be set to first value its model is bound to (first assignment) </br>
 
@@ -83,7 +83,7 @@ One-way &#171; vs. &#187; Two-way
 
 +++
 
-## Pro and contra One-way databinding
+## Pro and contra One-way data binding
 
 <table class="default">
   <tr>
@@ -116,7 +116,7 @@ One-way &#171; vs. &#187; Two-way
 
 +++
 
-## Two-way databinding
+## Two-way data binding
 
 &rarr; scope variable will change its value every time the model is assigned to a different value
 
@@ -124,7 +124,7 @@ One-way &#171; vs. &#187; Two-way
 
 +++
 
-## Pro and contra Two-way databinding
+## Pro and contra Two-way data binding
 
 <table class="default">
   <tr>
@@ -155,9 +155,13 @@ One-way &#171; vs. &#187; Two-way
   </tr>
 </table>
 
++++
+
+![One vs. Two Way Binding](assets/images/binding_comparison.png)
+
 ---
 
-## Frameworks supporting databinding
+## Frameworks supporting data binding
 
 ![Logo](assets/images/logo_map.png)
 
@@ -167,13 +171,13 @@ One-way &#171; vs. &#187; Two-way
 
 &rarr; statically typed language
 
-&rarr; compiles to plain javascript
+&rarr; compiles to plain JavaScript
 
 &rarr; popular JS framework **Angular 2.0**
 
 +++
 
-## Problems of Javascript
+## Problems of JavaScript
 
 &rarr; JS first developed as a language for client-side
 
@@ -187,17 +191,17 @@ One-way &#171; vs. &#187; Two-way
 
 ## Solution = TypeScript
 
-&rarr; designed by Andrers Hejlsberg (Designer of C# at Microsoft)
+&rarr; designed by Anders Hejlsberg (Designer of C# at Microsoft - 2012)
 
 &rarr; strongly typed, object orientated and compiled language
 
-&rarr; TypeScript is a superset of Javascript
+&rarr; TypeScript is a superset of JavaScript
 
-&rarr; will be compiled to Javascript
+&rarr; will be compiled to JavaScript
 
 +++
 
-TypeScript is Javascript plus some additional features
+TypeScript is JavaScript plus some additional features
 
 ![Logo](assets/images/typescriptSuper.png)
 
@@ -237,7 +241,7 @@ TypeScript is Javascript plus some additional features
 
 +++
 
-## First example of Typescript ...
+## First example of TypeScript ...
 
 ```ts
 class Greeting {
@@ -322,9 +326,9 @@ console.log(foo(100))      //outputs 110
 
 ---
 
-## "Databinding" without Vue.js
+## "Data binding" without Vue.js
 
-Modify a HTML element from Vanilla JS:
+Modify an HTML element from Vanilla JS:
 
 ```html
 <p id="test-id">Nothing to say</p>
@@ -336,13 +340,15 @@ Modify a HTML element from Vanilla JS:
 
 ---
 
-## Databinding in Vue.js
+## Data binding in Vue.js
 
 ![Databinding in Vue.js - schema](assets/images/vuejs_binding.png)
 
 [Quelle](https://vuejs.org/v2/guide/reactivity.html)
 
 +++
+
+## Data binding in Vue.js
 
 ```html
 <div id="root">
@@ -371,7 +377,7 @@ new Vue({
 
 ---
 
-## Edge cases of databinding in Vue.js
+## Edge cases of data binding in Vue.js
 
 +++
 
