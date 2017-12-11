@@ -21,8 +21,7 @@ let config = {
     }
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -66,7 +65,13 @@ let config = {
     new CopyWebpackPlugin([{
       from: 'src/assets',
       to: './assets'
-    },]),
+    }, {
+      from: './../assets',
+      to: './assets'
+    }, {
+      from: './../LectureNotes.md',
+      to: './assets/LectureNotes.md'
+    }]),
     new ExtractTextPlugin("main.css")
   ]
 };

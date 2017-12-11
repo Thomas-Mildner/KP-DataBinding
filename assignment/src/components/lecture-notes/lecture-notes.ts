@@ -15,6 +15,6 @@ export class LectureNotesComponent extends MarkedBaseComponent {
   }
 
   async mounted() {
-    this.compiledMarkdown = await this.getMarkedText('/assets/lecture-notes/notes.md');
+    this.compiledMarkdown = await this.getMarkedText('/assets/LectureNotes.md');
   }
 }

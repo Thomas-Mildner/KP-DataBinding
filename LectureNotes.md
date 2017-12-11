@@ -18,14 +18,14 @@
 First of all, we would like to define the term data binding and explain the principle behind it.
 Most applications are separated in different application layer. Mostly exists one gui(Graphical User Interface) Layer which has the responsibility for the gui display. There is also a layer for the application logic and a data model layer. This typical architecture is called 3-tier architecture. In the following picture is an application splitted in the three typical tiers. The presentation layer are various components which displays the gui components and handles the user interaction. The second tier is called application layer and is managing the business logic. This layer is responsible for the behavior of the application. This includes the process flow logic, computations and control of the data. The last layer is called data layer. It`s main point is to manage the persistence of the data, including loading and storing the data in a persistence way.
 
-![ThreeTierArchitecture](assets/img/threeTierApplication.gif)
+![ThreeTierArchitecture](/assets/images/threeTierApplication.gif)
 
 The main task for data binding is to bind an UI element to an application model. The value, which is displayed to the user is bound to a data container in the application logic. Changes requested from a user are also triggered in the application logic to handle the new data. This is a common software design pattern. Most data binding frameworks implemented this mechanism with an Observer pattern, which is also a common and well-known software design pattern. The Observer principle is working often as an underlying binding mechanism.
 
 ## Observer Pattern
 This short paragraph represents a quick repetition of the Observer pattern. If you already know the principle, you may skip this section.
 
-![ObserverPattern](../img/ObserverPattern.png) 
+![ObserverPattern](/assets/images/observer.png)
 
 The Observer pattern is a software design pattern defining a one-to-many dependency between objects. When one object is changes state, all its dependents are notified and updated automatically. This technique is often used in other software design patterns like the MVC (Model-View-Controller) concept. The watched object is called the subject and registers themselves as an Observer when they are created. Whenever the subject changes, it broadcasts to all registered Observers that it has changed. Observers may pull only the information they needed from the subject, but in most cases, they are fully notified from the Observer.
 This mechanism allows to split the view part of an application and the application logic. An object in the business logic layer is registered as an Observer and all gui components can register themselves by the Observer. If one part is changing the state of the object in the application layer, all registered gui components will be notified and can update their states in the UI. This ensures a synchronous state application widely. Because of these reasons many gui frameworks and concepts has implemented the Observer pattern.
@@ -48,8 +48,7 @@ On the other hand, input validation is some extra feature and a benefit for the 
 
 The following example shows an android application where input validation is implemented. A warning for an invalid mail address is displayed and there is a hint for the user that the password field is a mandatory field and input is required.
 
-<!-- TODO -->
-![Input Validation]()
+![Input Validation](/assets/images/validation.png)
 
 ### Data type mapping
 
@@ -109,7 +108,7 @@ But there are also some disadvantages of two-way data binding. Major changes in 
 
 There are a lot of gui frameworks that are supporting data binding. The following logo map will give an overview of the most popular frameworks.
 
-![LogoMap]()
+![LogoMap](/assets/images/logo_map.png)
 
 There are not only web application frameworks, there are also some desktop gui frameworks like JavaFx and Microsofts C# WPF. The binding mechanism is similar over all frameworks, only the syntax will be a bit different. Most frameworks are developed for JavaScript and the web environment such as Angular or React. In this Seminar Paper there will be a special view on Vue.js.
 
@@ -197,7 +196,7 @@ The value of `"message"` will be bound in both directions to the input field in 
 
 The following picture describes how the mechanism of data binding in vue.js is implemented. The bound models are just plain JavaScript objects. When the developer modifies these objects, the view will update. The mechanism is called Vue`s reactivity system.
 
-![DataBindingVue]()
+![DataBindingVue](/assets/images/vuejs_binding.png)
 
 If a plain JavaSript object is bound to a Vue instance, Vue will walk through all of its properties and convert them to getters/setters using `"Object.defineProperty"`. These getters/setters are invisible to the user but allow Vue to perform dependency tracking and change notification when properties are accessed or modified.
 Each component instance has a corresponding `"Watcher"` instance which records any changes of the instance. These changes can be rendered into the Virtual DOM Tree.
