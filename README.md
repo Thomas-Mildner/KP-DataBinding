@@ -1,10 +1,10 @@
-# Two-way DataBinding in MVC
+# Two-way data binding in MVC
 
 ## Technologies
 
 * TypeScript
 * Vue.js
-* _Optionally:_ C#/WPF as second example
+* Docker + Vue.js CLI + VSCode/Atom/vim/...
 
 # Lecture - Agenda
 
@@ -17,15 +17,16 @@
 
 # Exercise
 
-## Topcs
+## Part 1
 
-_TBD_
+* bind an object to a gui with vue.js techniques
 
-* ICNDB-API
+## Part 2
+
+* ICNDB-API ![Homepage](http://www.icndb.com/)
 * Display a different count of jokes
 * Replace the first and lastname in all displayed jokes at once with data binding (performance)
 
-## Technologies
+## Part 3
 
-* Plunker
-* Docker + Vue.js CLI + VSCode/Atom/vim/...
+* implement an own observer for gui data binding
