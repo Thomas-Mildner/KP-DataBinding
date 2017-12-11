@@ -31,7 +31,7 @@ export class Actor {
     console.log(birthDate);
   }
 
-  get favoriteMovies() : string[] {
+  get favoriteMovies(): string[] {
     return this._favoriteMovies;
   }
 

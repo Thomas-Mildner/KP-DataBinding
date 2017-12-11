@@ -1,5 +1,5 @@
 import {Component, Vue} from 'vue-property-decorator';
-import {Actor} from './model/actor'
+import {Actor} from './model/actor';
 
 import './part1.scss';
 
@@ -13,14 +13,12 @@ export class AssignmentPart1SolutionComponent extends Vue {
 
   constructor() {
     super();
-    this.currentInputActor = new Actor()
+    this.currentInputActor = new Actor();
   }
 
   addActor() {
-    let oldActors = this.favoriteActors;
-    oldActors.push(this.currentInputActor);
+    this.favoriteActors.push(this.currentInputActor);
     this.currentInputActor = new Actor();
-    this.favoriteActors = oldActors;
   }
 
   mounted() {
