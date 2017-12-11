@@ -13,6 +13,7 @@
 * Introduction Vue.js
 * Databinding in Vue.js
 * Problems of databinding
+* Summary
 
 
 # Data binding
@@ -29,7 +30,6 @@ The main task for data binding is to bind an UI element to an application model.
 ## Observer Pattern
 This short paragraph represents a quick repetition of the observer pattern. If you already know the principle, you may skip this section.
 
-<!-- TODO -->
 ![ObserverPattern](../img/ObserverPattern.png) 
 
 The observer pattern is a software design pattern defining a one-to-many dependency between objects. When one object is changes state, all its dependetens are notified and updated automatically. This technique is often used in other software design patterns like the MVC (Model-View-Controller) concept. The watched object is called the subject and registers themselves as an Observer when they are created. Whenever the subject changes, it broadcasts to all registered Observers that it has changed. Observers may pull only the information they needed from the Subject, but in most cases they are fully notified from the Observer.
@@ -40,7 +40,7 @@ This mechanism allows to split the view part of an application and the applicati
 In this chapter there will be some challenges evualuated which has to be solved through data binding.
 
 Main points may are:
-* Input validation
+* input validation
 * data type mapping
 * performance issues
 
@@ -221,4 +221,39 @@ The addition of the variable `"b"` will not be notified. This mechanism, if need
 Vue.set(vm.someObject, 'b', 2)
 ```
 
-As already discussed, it could be a main disadvantage that data binding could cause performance issues in the application if a huge amount of data will be updated. Vue.js solves this problem by performing DOM updates `"asynchronously"`. Whenever a data change is observed, it will open a queue and buffer all the data changes that happens in the same event loop.
+As already discussed, it could be a main disadvantage that data binding could cause performance issues in the application if a huge amount of data will be updated. Vue.js solves this problem by performing DOM updates `"asynchronously"`. Whenever a data change is observed, it will open a queue and buffer all the data changes that happens in the same event loop. If the same watcher is triggered multiple times in the same event loop, it will be pushed only once to the queue. This mechanism is preventing unneccessary calculations and DOM manipulations. A intern event called `"tick"` is triggered and the queues will be flushed and the update will be executed.
+This means that changed components in the gui will not re-render immmediately. It will update in the next `"tick"` event, when the queue is flushed. Most of the time the developer should not care about this, but in some cases it could be neccessary to manipulate the DOM by hand. Otherwise some actions should be triggered if the component is re-rendered. For this kind of use case Vue.js is providing a callback function to be notified if the `"tick"` event is executed.
+```ts
+Vue.component('example', {
+  template: '<span>{{ message }}</span>',
+  data: function () {
+    return {
+      message: 'not updated'
+    }
+  },
+  methods: {
+    updateMessage: function () {
+      this.message = 'updated'
+      console.log(this.$el.textContent) // => 'not updated'
+      this.$nextTick(function () {
+        console.log(this.$el.textContent) // => 'updated'
+      })
+    }
+  }
+})
+```
+
+A new Vue component is declared with a binded property `"message"` and containing methods. The instance method `"vm.$nextTick()"` will be automatically bound to the current Vue instance.
+
+# Summary
+
+## Data binding
+Data binding is a elementary concept of gui programming oftly based on common software design patterns like the observer pattern. There are a some disadvantages of data binding which could be possible a problem but the advantages outweigh the disadvantages. The developer should choose the right binding mechanism for the suited use case to prevent errors. There are a lot of gui frameworks who are support data binding.
+
+## Typescript
+
+Typescript is a superset of JavaScript, which means that a average JavaScript programmer could easily lern Typescript. He/she will take benefits with Typescript like a strongly typed language, object orientation and compile checks. Some kind of errors could be detected while compile time and will not throw runtime errors.
+
+## Vue.js
+
+Vue.js is a lightweight JavaScript framework to easily create and maintain applications. The integrated data binding is asynchronly implemented with buffer and queues. This overrides the main disadvantage of speed problems.
