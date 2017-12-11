@@ -1,6 +1,6 @@
-import {Component, Vue} from 'vue-property-decorator';
-import axios, {AxiosInstance} from 'axios';
-import {Joke, JokesArrayResponse, FormattableJoke} from './models/Joke';
+import { Component, Vue } from 'vue-property-decorator';
+import axios, { AxiosInstance } from 'axios';
+import { Joke, JokesArrayResponse, FormattableJoke } from './models/Joke';
 
 import './part2.scss';
 

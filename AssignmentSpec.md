@@ -82,4 +82,43 @@ Or just ask us!
 
 ## Part 2
 
+The second part deals with TypeScript in general and in combination with Vue. js in particular.
+
+At first have a look at the API spec of the ICNDB integrated in the application.
+The most interesting endpoint is `/jokes` because we want to fetch from 1 to 500 Chuck Norris jokes and display them once more as card view.
+
+Because writing TypeScript but handling the API responses as objects of type `any` is nonsense start by implementing the required interfaces.
+We recommend to implement one interface (e.g. `JokesArrayResponse` ) as a wrapper for the outer response and one interface (e.g. `Joke`) as wrapper for the concrete inner object.
+
+If you have completed these two interfaces you're ready to implement the HTTP calls to the API.
+The recommended way to do HTTP communication in Vue.js is to use [axios](https://github.com/axios/axios) (especially with TypeScript because axios provides typings).
+Of course you can use other libraries but axios is already installed so it's the fastest way to get started.
+
+When you have logged your first successfull responses you're good to go to display the retrieved data.
+The given template already contains the required markup but some bindings and directives are missing.
+The _TODO_ entries should guide you through this relatively quickly.
+
+Now that you're able to display one joke (the default page size) it's time to adopt the dropdown by adding a click-handler.
+The handler should pass the new page size to the component and trigger a reload of the items.
+
+_Hint: the doc page mentioned in the first part also explains how to register click handlers._
+
+The last thing we want to achieve is that the input fields at the top of the page are used to change the first and last name displayed in the jokes (live of course).
+
+_Hint: you might need an extra `Joke` implementation to accomplish this behaviour._
+
+### A word about asynchronous calls in TypeScript
+
+Additionally to the classic callback style to handle asynchronous calls (callback hell - yeah!) TypeScript provides a nice feature to await the response and handle it in a (pseudo) synchronous way.
+The following snippet shows how to use _axios_ with TypeScripts `async` and `await`:
+
+```ts
+private async doCall() {
+    let url = 'https://icndb.kns-it.de/api/v1/jokes/random';
+    let response: AxiosResponse<JokesArrayResponse> = await this.axios.get(url);
+    // ...
+}
+```
+
 ## Part 3
+

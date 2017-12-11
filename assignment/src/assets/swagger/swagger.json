@@ -98,91 +98,6 @@
           }
         }
       }
-    },
-    "/categories": {
-      "get": {
-        "tags": [
-          "categories"
-        ],
-        "summary": "Get all categories",
-        "operationId": "getCategories",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "page_index",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 0
-            }
-          },
-          {
-            "in": "query",
-            "name": "page_size",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 20
-            }
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": "success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CategoriesArray"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/categories/{categoryId}": {
-      "post": {
-        "tags": [
-          "categories"
-        ],
-        "summary": "Create a new category",
-        "operationId": "createCategory",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "categoryId",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Category"
-              }
-            }
-          },
-          "required": true
-        }
-      }
     }
   },
   "components": {
@@ -213,33 +128,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Joke"
-            }
-          }
-        }
-      },
-      "Category": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string"
-          }
-        }
-      },
-      "CategoriesArray": {
-        "type": "object",
-        "properties": {
-          "count": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "categories": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Category"
             }
           }
         }
