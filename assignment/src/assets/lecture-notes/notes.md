@@ -6,13 +6,11 @@
 ## Agenda
 
 * What is data binding?
-* History and concepts
 * Two-way vs. One-way databinding
 * Frameworks supporting databinding
 * Introduction to TypeScript
 * Introduction Vue.js
 * Databinding in Vue.js
-* Problems of databinding
 * Summary
 
 
