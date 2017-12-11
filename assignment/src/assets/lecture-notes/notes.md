@@ -159,3 +159,66 @@ let num: number = "hello"
 
 &#x26a1; Compiler error because `"hello"` is no `number`
 The compiler will throw an error, because the variable `"hello"` is no `number`. This is a advantage of a strongly typed programming language.
+
+
+## Vue.js
+
+Vue.js is a progressive JavaScript framework for building user interfaces. [Homepage](https://vuejs.org) To compare Vue.js with other libraries/ frameworks, check out the [comparison](https://vuejs.org/v2/guide/comparison.html) with other common frameworks.
+It is highly adoptable and easy to integrate in existing or new web projects.
+(Vue.js doesn`t support IE8 and below)
+
+In the following example "data binding" will be used without Vue.js. This is a sample programmed with Vanilla JS. The first code snippet is from HTML showing a declaration of a paragraph with the id `"test-id"` and the default value `"Nothing to say"`.
+
+```html
+<p id="test-id">Nothing to say</p>
+```
+Now let us add some logic. First the paragraph with the id `"test-id"` will be selected from the DOM (Document Object Model) and stored into a variable `"pElem"`. After this step the value of the paragraph could be changed to `"Hello from JS"`. This is 
+```js
+let pElem = document.getElementById("test-id");
+pElem.innerHTML = "Hello from JS";
+```
+
+This mechanism has little to do with data binding, but shows the fundamental topic.
+
+The same problem is solved with "real data binding" in Vue.js:
+```html
+<div id="root">
+  <input type="text" v-model='message'>
+  <p>The value is {{message}}</p>
+</div>
+
+<script>
+new Vue({
+    el: '#root',
+    data: {
+        message: 'test binding'
+    }
+})
+</script>
+```
+The value of `"message"` will be bound in both directions to the input field in the view. The binding will be declared with a `"v-model"` or by using a `"{{template-string}}"` directly in HTML. In the script tag a new Vue with a containing property message in the data property will be declared. This information is binded to the view.
+
+### How is data binding implemented in Vue.js?
+
+The following picture describes how the mechanism of data binding in vue.js is implemented. The binded models are just plain JavaScript objects. When the developer modifies these objects, the view will update. The mechanism is called Vue`s reactivity system.
+
+![DataBindingVue]()
+
+If a plain JavaSript object is bindet to a Vue instance, Vue will walk through all of its properties and convert them to getters/setters using `"Object.defineProperty"`. These getters/setters are invisible to the user but allow Vue to perform dependency tracking and change notification when properties are accessed or modified.
+Each component instance has a corresponding `"Watcher"` instance which records any changes of the instance. These changes can be rendered into the Virtual DOM Tree.
+
+Be careful, Vue is limited to the features of JavaScript and cannot detect property addition or deletion ! 
+```ts
+var vm = new Vue({
+  data: {
+    a: 1  // `vm.a` is now reactive
+  }
+})
+vm.b = 2 // `vm.b` is NOT reactive
+```
+The addition of the variable `"b"` will not be notified. This mechanism, if needed, could be solved with:
+```ts
+Vue.set(vm.someObject, 'b', 2)
+```
+
+As already discussed, it could be a main disadvantage that data binding could cause performance issues in the application if a huge amount of data will be updated. Vue.js solves this problem by performing DOM updates `"asynchronously"`. Whenever a data change is observed, it will open a queue and buffer all the data changes that happens in the same event loop.
