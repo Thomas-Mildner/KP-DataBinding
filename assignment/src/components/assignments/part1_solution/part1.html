@@ -1,1 +1,52 @@
-<h1>Assignment part 1 - solution</h1>
+<md-tabs>
+  <md-tab id="form" class="form-container" md-label="Input-Binding">
+    <h3>Enter your favorite actor:</h3>
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>First name</label>
+        <md-input v-model="currentInputActor.firstName" maxlength="20"></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>Last name</label>
+        <md-input v-model="currentInputActor.lastName" maxlength="20"></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>Born:</label>
+        <md-input v-model="currentInputActor.birthDate" type="date"></md-input>
+      </md-input-container>
+      <md-chips style="margin-top: 20px" v-model="currentInputActor.favoriteMovies" md-input-placeholder="Add favorite movies"></md-chips>
+      <md-input-container>
+          <label>Image link:</label>
+          <md-input v-model="currentInputActor.imageLink" maxlength="200"></md-input>
+        </md-input-container>
+    </form>
+    <md-button v-on:click="addActor()" class="md-fab md-fab-bottom-right">
+        <md-icon>add</md-icon>
+      </md-button>
+  </md-tab>
+
+  <md-tab id="output" md-label="Element-Binding">
+      <div class="assignment-part3-solution-container">
+        <md-layout md-gutter>
+          <md-layout>
+            <md-card class="actor-card" v-for="actor in favoriteActors" md-with-hover>
+              <md-card-media>
+                  <img v-if="actor.imageLink.length > 0" :src="actor.imageLink">
+                  <img v-else src="/assets/img/chuck_norris.jpg" alt="Chuck Norris">
+              </md-card-media>
+              <md-card-header>
+                <div class="md-title">{{actor.firstName}} {{actor.lastName}}</div>
+              </md-card-header>
+              <md-card-content>
+                <p><strong>Born:</strong> {{actor.birthDate}}</p>
+                <p><strong>Favorite movies:</strong></p>
+                <md-list>
+                  <md-list-item v-for="movie in actor.favoriteMovies" :key=movie>{{movie}}</md-list-item>
+                </md-list>
+              </md-card-content>
+            </md-card>
+          </md-layout>
+        </md-layout>
+      </div>
+  </md-tab>
+</md-tabs>
