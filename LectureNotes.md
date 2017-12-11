@@ -43,7 +43,7 @@ The Model View Controller (MVC) Pattern is a software architectural pattern for 
 ![MVCPattern](/assets/images/mvcConcept.png)
 
 The MVC pattern offers architectural advantages over standard JavaScript - it helps the developer to write a better organized, well separated application code. This pattern is highly tested and can be used for any programming language that includes a user interface.
-The persistence of the data is not part of the pattern and could be solved with some different implementations.For example, the controller can store the data in the model and persistence layer, or the model works with its own persistence strategy.
+The persistence of the data is not part of the pattern and could be solved with some different implementations. For example, the controller can store the data in the model and persistence layer, or the model works with its own persistence strategy.
 
 ## Challenges for data binding
 
