@@ -55,10 +55,10 @@ export class AssignmentPart2SolutionComponent extends Vue {
 
   /**
    * Helper method to load the joke items
-   * executes the HTTP call with axios and converts the Jokes to FormattableJokes to be able to change first and lastname afterwards
+   * executes the HTTP call with axios and converts the Jokes to FormattableJokes to be able to change first and last name afterwards
    */
   private async loadItems() {
-    let temp: JokesArrayResponse = (await this.axios.get(this.url + this.currentPageSize)).data;
+    let temp: JokesArrayResponse = (await this.axios.get(`${this.url}${this.currentPageSize}`)).data;
     this.items = [];
     for (let j of temp.jokes) {
       this.items.push(new FormattableJoke(j));
