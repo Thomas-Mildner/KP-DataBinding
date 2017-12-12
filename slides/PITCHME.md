@@ -77,9 +77,11 @@ One-way &#171; vs. &#187; Two-way
 
 ## One-way data binding
 
-&rarr; scope variable in HTML will be set to first value its model is bound to (first assignment) </br>
+&rarr; scope variable in HTML will be set to first value its model is bound to (first assignment)
 
-&rarr; bind the data from model to view once
+&rarr; bind the data from model to view
+
+&rarr; changes in the model are getting transported to the view but not vice versa
 
 +++
 
@@ -118,9 +120,9 @@ One-way &#171; vs. &#187; Two-way
 
 ## Two-way data binding
 
-&rarr; scope variable will change its value every time the model is assigned to a different value
+&rarr; scope variable will change its value every time the the model value is changed and vice versa
 
-&rarr; bind the data from model to view and view to model
+&rarr; bind the data from model to view and vice versa
 
 +++
 
@@ -133,10 +135,10 @@ One-way &#171; vs. &#187; Two-way
   </tr>
   <tr>
     <td class="odd">
-      bind multiple gui elements to single source of truth in model
+      bind multiple GUI elements to a single source of truth in the model
     </td>
     <td class="odd">
-      changes in model will cause a change in gui<br/>
+      changes in model will cause a change in UI<br/>
       &rarr; Performance issue
     </td>
   </tr>
@@ -146,7 +148,7 @@ One-way &#171; vs. &#187; Two-way
   </tr>
   <tr>
     <td class="odd">
-      changes in data will be automatically added  to gui &rarr; write less code for display logic
+      changes in data will be automatically added  to UI &rarr; write less code for display logic
     </td>
     <td class="odd">
       data manipulation / parsing works not very well<br/>
@@ -173,19 +175,19 @@ One-way &#171; vs. &#187; Two-way
 
 &rarr; compiles to plain JavaScript
 
-&rarr; popular JS framework **Angular 2.0**
+&rarr; popular JS framework **Angular 2.0/IO** (not just compatible through typings but completely written in TypeScript)
 
 +++
 
 ## Problems of JavaScript
 
-&rarr; JS first developed as a language for client-side
+&rarr; JS was first developed as a language for client-side
 
 &rarr; Node.js marked JS as an emerging server-side technology
 
-&rarr; JS difficult to maintain and not reusable
+&rarr; JS is difficult to maintain and hardly reusable
 
-&rarr; no Object Orientation, no strong type checks, no compiling checks
+&rarr; no object orientation, no strong type checks, no compiling checks
 
 +++
 
@@ -228,7 +230,7 @@ TypeScript is JavaScript plus some additional features
   <tr>
     <td class="odd">JavaScript is TypeScript</td>
     <td class="odd">
-      Any &lt;b&gt;.js&lt;/b&gt; file can be renamed to &lt;b&gt;.ts&lt;/b&gt; and compiled with other TypeScript Files
+      Any <b>.js</b> file can be renamed to <b>.ts</b> and compiled with other TypeScript Files
     </td>
   </tr>
   <tr>
@@ -260,8 +262,6 @@ g.greet();
 +++
 
 ## Variables and Compile Checks
-
-TypeScript:
 
 ```ts
 let firstName: string = "John";
@@ -296,7 +296,7 @@ calc_discount(1000, 0.30)
 
 @[1-4](Declaring a new function with default parameter `rate`)
 @[6](Calling function with default parameter)
-@[9](Calling function with override of default parameter)
+@[8-9](Calling function with override of default parameter)
 
 +++
 
@@ -312,8 +312,6 @@ console.log(res(12, 2))
 +++
 
 ## Lambda Expressions
-
-TypeScript:
 
 ```ts
 let foo = (x: number) => 10 + x;
@@ -348,11 +346,10 @@ Modify an HTML element from Vanilla JS:
 
 +++
 
-## Data binding in Vue.js
+## Data binding in Vue.js - Template syntax
 
 ```html
 <div id="root">
-  <input type="text" v-model='message'>
   <p>The value is {{message}}</p>
 </div>
 
@@ -366,8 +363,79 @@ new Vue({
 </script>
 ```
 
-@[1-4](Declare binding with `v-model` or by using a `{{template-string}}` directly in HTML)
+@[1-3](Declare binding by using a `{{template-string}}` directly in HTML)
+@[5-12](Instantiate new `Vue` and declare a property `message` within the `data` property)
+
++++
+
+## Data binding in Vue.js - Attribute syntax
+
+```html
+<div id="root">
+  <input type="text" v-model='message'>
+  <p>{{message}}</p>
+</div>
+
+<script>
+new Vue({
+  el: '#root',
+  data: {
+    message: 'initial value'
+  }
+});
+</script>
+```
+
+@[1-4](Declare binding by using the `v-model` attribute - `v-model` can only be used on input elements!)
 @[6-13](Instantiate new `Vue` and declare a property `message` within the `data` property)
+
++++
+
+## Data binding in Vue.js - Conditions
+
+```html
+<div id="root">
+  <p v-if="showParagraph">{{message}}</p>
+  <p v-else>Paragraph is hidden</p>
+</div>
+
+<script>
+  new Vue({
+    el: '#root',
+    data: {
+      message: 'Hello :)',
+      showParagraph: true
+    }
+  })
+</script>
+```
+
+@[1-4](Declare a conditional binding with `v-if`- `v-else` is optional. Also expression can be used within `v-if`!)
+@[6-14](Instantiate new `Vue` and declare the properties `message`, and `showParagraph` within the `data` property)
+
++++
+
+## Data binding in Vue.js - Loops
+
+```html
+<div id="root">
+  <ul>
+    <li v-for="item in items" :key="item.id">{{item.value}}</li>
+  </ul>
+</div>
+
+<script>
+  new Vue({
+    el: '#root',
+    data: {
+      items: [ { id: 1, value: 'Hello' }, { id: 2, value: 'World' } ]
+    }
+  })
+</script>
+```
+
+@[1-5](Declare a loop by using the directive `v-for`. The `:key` attribute is not mandatory but best practice (and you're getting warnings if you don't declare it))
+@[7-14](Instantiate new `Vue` and declare a list of items within the `data` property which are iterated in the view)
 
 ---
 
@@ -406,3 +474,22 @@ Vue.set(vm.someObject, 'b', 2)
 ```
 
 _Side note: because TypeScript enforces strict typing this edge case does not really matter for TypeScript (except you're using `any` but why should you &#x1f609; )._
+
++++
+
+### Reactive properties
+
+```js
+let vm = new Vue({
+  data: {
+    message: ''
+  }
+});
+
+//...
+
+vm.message = 'Hello, World!';
+```
+
+@[1-5](Instantiate new `Vue` and declare an empty message property as Vue.js can't handle dynamically added properties. Property has to have a default value to avoid `undefined` errors)
+@[9](Set value of property later on)
