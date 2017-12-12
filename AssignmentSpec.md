@@ -107,7 +107,7 @@ The last thing we want to achieve is that the input fields at the top of the pag
 
 _Hint: you might need an extra `Joke` implementation to accomplish this behaviour._
 
-### A word about asynchronous calls in TypeScript
+### A few words about asynchronous calls in TypeScript
 
 Additionally to the classic callback style to handle asynchronous calls (callback hell - yeah!) TypeScript provides a nice feature to await the response and handle it in a (pseudo) synchronous way.
 The following snippet shows how to use _axios_ with TypeScripts `async` and `await`:
@@ -153,3 +153,26 @@ As soon as you have completed the first 3 parts you should be able to update the
 
 To test the last part (a way-two binding if you like) the view contains two input fields (one of them is disabled).
 When you're changing the _first name_ in the enabled input element the _first name_ in the disabled input should change too.
+
+### A few words about the `keyof` feature in TypeScript
+
+Since version 2.1 TypeScript has a nice feature called `keyof` ([Announcement](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html)).
+
+This is particular helpful when you have to deal with names of properties (as in the `Observer` to bind a property to a view element).
+
+If you define the `Observer` like this:
+
+```ts
+class Observer<TModel> {}
+```
+
+and the method `addModelBinding(...)` like this:
+
+```ts
+addModelBinding<K extends keyof TModel>(propertyName: K, domId: string = propertyName) {
+    // ...
+}
+```
+
+TypeScript will throw compiler errors when you pass a `propertyName` which is not present in the current class.
+Of course this only takes affect when you stay within the TypeScript universe!

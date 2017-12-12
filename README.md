@@ -23,14 +23,15 @@
 
 ### Part 1
 
-* bind an object to a gui with vue.js techniques
+* Create a tiny registration form by using the Vue.js basics and display the created data in a second view fragment
 
 ### Part 2
 
 * ICNDB-API [Homepage](http://www.icndb.com/)
+* TypeScript hands-on
 * Display a different count of jokes
-* Replace the first and lastname in all displayed jokes at once with data binding (performance)
+* Replace the first and last name in all displayed jokes at once with data binding (performance)
 
 ### Part 3
 
-* implement an own observer for gui data binding
+* Implement a custom observer to understand the underlying concepts of Vue.js
