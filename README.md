@@ -17,6 +17,8 @@
 
 [See the lecture notes here](./LectureNotes.md) or as [PDF](./assets/documents/LectureNotes.pdf).
 
+The slides are available [here](https://pitch.kns-it.de/Jonny9904/KP-DataBinding?p=slides).
+
 ## Assignment
 
 [Read the spec here](./AssignmentSpec.md) or as [PDF](./assets/documents/AssignmentSpec.pdf).
