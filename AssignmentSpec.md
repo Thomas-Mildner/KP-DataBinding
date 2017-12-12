@@ -176,3 +176,8 @@ addModelBinding<K extends keyof TModel>(propertyName: K, domId: string = propert
 
 TypeScript will throw compiler errors when you pass a `propertyName` which is not present in the current class.
 Of course this only takes affect when you stay within the TypeScript universe!
+
+## Resources
+
+* [Vue.js docs](https://vuejs.org/v2/guide/syntax.html)
+* [Vue material docs](https://vue-material-old.netlify.com/#/)
