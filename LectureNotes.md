@@ -5,7 +5,7 @@
 ### What is data binding?
 
 First of all, we would like to define the term data binding and explain the principle behind it.
-Most applications are separated in different application layer. Mostly exists one gui(Graphical User Interface) Layer which has the responsibility for the gui display. There is also a layer for the application logic and a data model layer. This typical architecture is called 3-tier architecture. In the following picture is an application splitted in the three typical tiers. The presentation layer are various components which displays the gui components and handles the user interaction. The second tier is called application layer and is managing the business logic. This layer is responsible for the behavior of the application. This includes the process flow logic, computations and control of the data. The last layer is called data layer. It`s main point is to manage the persistence of the data, including loading and storing the data in a persistence way.
+Most applications are separated in different application layer. Mostly exists one gui(Graphical User Interface) Layer which has the responsibility for the gui display. There is also a layer for the application logic and a data model layer. This typical architecture is called 3-tier architecture. In the following picture is an application splitted in the three typical tiers. The presentation layer are various components which displays the gui components and handles the user interaction. The second tier is called application layer and is managing the business logic. This layer is responsible for the behavior of the application. This includes the process flow logic, computations and control of the data. The last layer is called data layer. It\`s main point is to manage the persistence of the data, including loading and storing the data in a persistence way.
 
 ![ThreeTierArchitecture](assets/images/threetierlayers.png)
 
@@ -24,9 +24,9 @@ This mechanism allows to split the view part of an application and the applicati
 
 The Model View Controller (MVC) Pattern is a software architectural pattern for implementing user interfaces. It divides the application into three interconnected parts.
 
-* Model - the model is representing an object carrying data. It can also have logic to update controller if its data changes.
-* View - the View represents the visualization of the data the model contains
-* Controller -  the Controller acts on both model and view. It controls the data flow into model objects and updates the view whenever the data changes. It is the link between model and view and keeps the view and model separate.
+-   Model - the model is representing an object carrying data. It can also have logic to update controller if its data changes.
+-   View - the View represents the visualization of the data the model contains
+-   Controller -  the Controller acts on both model and view. It controls the data flow into model objects and updates the view whenever the data changes. It is the link between model and view and keeps the view and model separate.
 
 ![MVCPattern](assets/images/mvcConcept.png)
 
@@ -39,9 +39,9 @@ In this chapter there will be evaluated some challenges which has to be solved t
 
 Main points could be:
 
-* input validation
-* data type mapping
-* performance issues
+-   input validation
+-   data type mapping
+-   performance issues
 
 #### Input Validation
 
@@ -65,7 +65,7 @@ This mechanism is also part of the input validation topic because input validati
 
 Data binding is a great feature because it reduces the frontend code for the developer. The programmer can set up a simple data binding with a few commands instead of writing a huge amount of frontend logic to display the values.
 
-But there are also some disadvantages of data binding. If there is a large amount of data to bind or if it is necessary to parse the data a performance issue could occur. The fact that every change is communicated can lead to costly operations. Let`s look at an example. A complex object with a field for a mail address is bound to the gui and each input has to be validated with a given whitelist of valid mail addresses. Now a list of customers, in our case the complex object, is updating their mail addresses. Each object must be validated against the whitelist and this could lead a performance issue in the gui.
+But there are also some disadvantages of data binding. If there is a large amount of data to bind or if it is necessary to parse the data a performance issue could occur. The fact that every change is communicated can lead to costly operations. Let\`s look at an example. A complex object with a field for a mail address is bound to the gui and each input has to be validated with a given whitelist of valid mail addresses. Now a list of customers, in our case the complex object, is updating their mail addresses. Each object must be validated against the whitelist and this could lead a performance issue in the gui.
 
 A good advice or good practice is to reduce heavy parsing of data in the gui thread. The gui should check for some basic input validations but a real validation should be triggered in the application logic layer.
 
@@ -78,17 +78,17 @@ For each use case should a suited binding type chosen.
 
 First, we want to clarify the definition of one-way data binding. The following examples are used in a web application.
 
-One-way data binding means that a scope variable in HTML will be set to the first value it`s model is bound to - this is often the first assignment of the variable in the application layer. In other words, the data is bound to the view only once from the model.
+One-way data binding means that a scope variable in HTML will be set to the first value it\`s model is bound to - this is often the first assignment of the variable in the application layer. In other words, the data is bound to the view only once from the model.
 A change in the gui forced by the user, is ignored by the application layer because the data has not changed. This could lead to invalid states in the application.
 This mechanism has a few advantages but also a few disadvantages. The following table provides a quick overview of the most important advantages and disadvantages.
 
-| Pro | Contra |
-|-----------------------------------------------|-----------------------------------------------------------------------|
-| only one direction of data flow | No automatic adaption of data in the model, other components, the GUI |
-| easy to debug | invalid states in the application |
-| no code to display values in the gui required |  |
+| Pro                                           | Contra                                                                |
+| --------------------------------------------- | --------------------------------------------------------------------- |
+| only one direction of data flow               | No automatic adaption of data in the model, other components, the GUI |
+| easy to debug                                 | invalid states in the application                                     |
+| no code to display values in the gui required | -                                                                     |
 
-Listed as an advantage of one-way data binding is that it exists only one direction of the data flow, from the model to the view. This leads to a easier way to debug and search for errors for the developer in error cases. Also an advantage for the developer is the fact to write less code for the frontend. There is no logic for displaying the values in the gui required. The code in the frontend looks cleaner and is easier to maintain. Another "advantage" is the fact that there is no input validation and data type mapping necessary. That`s because the user cannot change the data - some applications could be useless. On the other hand, in some use cases you do not need to change the data from the view. For example,labels that displays help to the user do not need to be updated by the user.
+Listed as an advantage of one-way data binding is that it exists only one direction of the data flow, from the model to the view. This leads to a easier way to debug and search for errors for the developer in error cases. Also an advantage for the developer is the fact to write less code for the frontend. There is no logic for displaying the values in the gui required. The code in the frontend looks cleaner and is easier to maintain. Another "advantage" is the fact that there is no input validation and data type mapping necessary. That\`s because the user cannot change the data - some applications could be useless. On the other hand, in some use cases you do not need to change the data from the view. For example,labels that displays help to the user do not need to be updated by the user.
 
 #### Two-way data binding
 
@@ -97,12 +97,11 @@ A scope variable in HTML will change its value every time the model is assigned 
 
 The following table is showing the main advantages and disadvantages of two-way data binding.
 
-|                                            Pro                                            |                                 Contra                                |
-|:-----------------------------------------------------------------------------------------:|:---------------------------------------------------------------------:|
-|               bind multiple gui elements to single source  of truth in model              |   changes in model will cause a change in gui --> Performance issue   |
-|                                data consistency guaranteed                                |                 input validation / data type matching                 |
+| Pro                                                                                      | Contra                                                                |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| bind multiple gui elements to single source  of truth in model                           | changes in model will cause a change in gui &rarr; Performance issue  |
+| data consistency guaranteed                                                              | input validation / data type matching                                 |
 | changes in data will be automatically added  to gui --> write less code to display logic | data manipulation / parsing works not very well --> Performance issue |
-|                                                                                           |                                                                       |
 
 A main advantage of two-way data binding is the fact that multiple gui elements can be bound to a single source of truth in the application layer. This prevents invalid states of the application and data consistency could be guaranteed. A requested change of the data in the model will lead to a change in all registered gui components, like in the chapter with the Observer pattern. All registered components can update their values if a state change is registered. And the way back from the view to the model is also possible. If the user is changing the data in the view and send a request to the backend of the application, this data can be changed in the model. And of course, the same advantage applies as with one-way-binding: less code is needed for the presentation in the frontend of the website, as well.
 But there are also some disadvantages of two-way data binding. Major changes in the view can cause performance problems in the application. This aspect is already discussed in the beginning of this section using the example of whitelist customer mail addresses. Since both directions are supported, a change in the view also leads to a change in the application logic. This leads to the fact that input validations have to be carried out - see chapter "Input Validation" for more information.
@@ -123,7 +122,7 @@ Typescript is a statically typed language and will be compiled to plain JavaScri
 
 Typescript was developed because of some problems with JavaScript. JavaScript has a reputation for being difficult to maintain in large projects and not easy to reuse. The solution was to design a new programming language which solves the main problems of JavaScript. The lead Designer of Typescript is Anders Heijlsberg, who is also the Designer of C# at Microsoft.
 
-Typescript is strongly typed, object orientated and a compiled language. It is also a superset of JavaScript because it will be compiled to plain JavaScript. In other words: Typescript is plain JavaScript with some additional features. This is a major advantage as a developer doesn`t need to learn a new programming language if he/she already knows how to program JavaScript. Existing JavaScript code can be consumed in a Typescript project, this means that existing JavaScript frameworks, tools and libraries can be reused in a Typescript project. Another advantage is the fact that Typescript is portable across multiple browsers, devices and operating systems. Typescript runs wherever JavaScript runs.
+Typescript is strongly typed, object orientated and a compiled language. It is also a superset of JavaScript because it will be compiled to plain JavaScript. In other words: Typescript is plain JavaScript with some additional features. This is a major advantage as a developer doesn\`t need to learn a new programming language if he/she already knows how to program JavaScript. Existing JavaScript code can be consumed in a Typescript project, this means that existing JavaScript frameworks, tools and libraries can be reused in a Typescript project. Another advantage is the fact that Typescript is portable across multiple browsers, devices and operating systems. Typescript runs wherever JavaScript runs.
 
 Let us look at a first example of Typescript:
 
@@ -155,21 +154,23 @@ Compile Error:
 let num: number = "hello"
 ```
 
-&#x26a1; Compiler error because `"hello"` is no `number`
+⚡ Compiler error because `"hello"` is no `number`
 The compiler will throw an error, because the variable `"hello"` is no `number`. This is a advantage of a strongly typed programming language.
 
 ### Vue.js
 
 Vue.js is a progressive JavaScript framework for building user interfaces. [Homepage](https://vuejs.org) To compare Vue.js with other libraries/ frameworks, check out the [comparison](https://vuejs.org/v2/guide/comparison.html) with other common frameworks.
 It is highly adoptable and easy to integrate in existing or new web projects.
-(Vue.js doesn`t support IE8 and below)
+(Vue.js doesn\`t support IE8 and below)
 
 In the following example "data binding" will be used without Vue.js. This is a sample programmed with Vanilla JS. The first code snippet is from HTML showing a declaration of a paragraph with the id `"test-id"` and the default value `"Nothing to say"`.
 
 ```html
 <p id="test-id">Nothing to say</p>
 ```
+
 Now let us add some logic. First the paragraph with the id `"test-id"` will be selected from the DOM (Document Object Model) and stored into a variable `"pElem"`. After this step the value of the paragraph could be changed to `"Hello from JS"`. This is 
+
 ```js
 let pElem = document.getElementById("test-id");
 pElem.innerHTML = "Hello from JS";
@@ -199,7 +200,7 @@ The value of `"message"` will be bound in both directions to the input field in 
 
 #### How is data binding implemented in Vue.js?
 
-The following picture describes how the mechanism of data binding in vue.js is implemented. The bound models are just plain JavaScript objects. When the developer modifies these objects, the view will update. The mechanism is called Vue`s reactivity system.
+The following picture describes how the mechanism of data binding in vue.js is implemented. The bound models are just plain JavaScript objects. When the developer modifies these objects, the view will update. The mechanism is called Vue\`s reactivity system.
 
 ![DataBindingVue](assets/images/vuejs_binding.png)
 
@@ -251,6 +252,7 @@ A new Vue component is declared with a bounded property `"message"` and containi
 ## Summary
 
 ### Data binding
+
 Data binding is a elementary concept of gui programming often based on common software design patterns like the Observer pattern. There are some disadvantages of data binding which could be possible a problem but the advantages outweigh the disadvantages. The developer should choose the right binding mechanism for the suited use case to prevent errors. There are a lot of gui frameworks who are support data binding.
 
 ### Typescript
