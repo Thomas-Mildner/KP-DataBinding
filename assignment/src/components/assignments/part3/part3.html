@@ -1,1 +1,20 @@
-<h1>Assignment part 3</h1>
+<div>
+    <h1>Assignment 3 - solution</h1>
+
+    <!-- <input id="firstNameInput" type="text"></input> -->
+    <form novalidate @submit.stop.prevent="submit">
+      <md-input-container>
+        <label>GUID</label>
+        <md-input id="guid"></md-input>
+      </md-input-container>
+      <md-input-container>
+        <label>First name input</label>
+        <md-input id="firstNameInput"></md-input>
+      </md-input-container>
+      <md-input-container>
+          <label>First name display</label>
+          <md-input id="firstName" disabled></md-input>
+        </md-input-container>
+    </form>
+    <md-button class="md-primary md-raised" v-on:click="updatePersonGuid()">Update GUID</md-button>
+</div>

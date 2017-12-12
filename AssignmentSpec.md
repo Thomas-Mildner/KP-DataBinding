@@ -72,10 +72,10 @@ It contains (more or less) a typical Vue.js TypeScript component:
 The file `part1.html` contains a tab view with two tabs. One to register your favorite movie actors and one for displaying them as card view.
 Once you have "submitted" the actor registration form (actually you don't submit anything as we are in a single page application) the actor should show up in the second tab.
 
-The required HTML code is already there but all databindings are missing.
+The required HTML code is already there but all data bindings are missing.
 Start by binding the form to the properties of the `currentInputActor` in the component.
 If you are not sure if the binding is working correctly have a look at the browser console.
-The given model logs the new value of a property everytime a setter is called (of course just for debugging purposes! Don't do that in production!).
+The given model logs the new value of a property every time a setter is called (of course just for debugging purposes! Don't do that in production!).
 
 If you have no idea how to start have a look at the [docs](https://vuejs.org/v2/guide/syntax.html).
 Or just ask us!
@@ -94,11 +94,11 @@ If you have completed these two interfaces you're ready to implement the HTTP ca
 The recommended way to do HTTP communication in Vue.js is to use [axios](https://github.com/axios/axios) (especially with TypeScript because axios provides typings).
 Of course you can use other libraries but axios is already installed so it's the fastest way to get started.
 
-When you have logged your first successfull responses you're good to go to display the retrieved data.
+When you have logged your first successful responses you're good to go to display the retrieved data.
 The given template already contains the required markup but some bindings and directives are missing.
 The _TODO_ entries should guide you through this relatively quickly.
 
-Now that you're able to display one joke (the default page size) it's time to adopt the dropdown by adding a click-handler.
+Now that you're able to display one joke (the default page size) it's time to adopt the drop down by adding a click-handler.
 The handler should pass the new page size to the component and trigger a reload of the items.
 
 _Hint: the doc page mentioned in the first part also explains how to register click handlers._
@@ -122,3 +122,34 @@ private async doCall() {
 
 ## Part 3
 
+You're still here?
+
+Well, it's time to make your hands **really** dirty!
+
+The last part of the assignment covers the underlying concepts of data binding in Vue.js.
+(Don't you want to go for a mulled wine after all?)
+
+You have been warned!
+
+As already explained in the lecture Vue.js uses `Object.defineProperty()` ([Mozilla Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)) to create a proxy for every property of every object defined in a component.
+
+The file `observer.ts` already contains all necessary classes.
+What's missing is the logic to create these proxy properties and the whole event handling.
+
+The given class structure is oriented at the [real implementation](https://github.com/vuejs/vue/blob/dev/src/core/observer/index.js) of Vue.js but shortened and simplified to focus on the concepts.
+
+The best starting point is probably the original source code.
+When you have an idea how to start, implement the classes in this order:
+
+1. `Dependency`
+1. `Observer`
+1. `ModelBinder`
+1. `DOMBinder`
+
+The given code contains _TODOs_ and hints to guide you through the implementation.
+The component `AssignmentPart3Component` and the model `Person` are predefined and can be used directly.
+
+As soon as you have completed the first 3 parts you should be able to update the GUID of the person by clicking the button in the view.
+
+To test the last part (a way-two binding if you like) the view contains two input fields (one of them is disabled).
+When you're changing the _first name_ in the enabled input element the _first name_ in the disabled input should change too.

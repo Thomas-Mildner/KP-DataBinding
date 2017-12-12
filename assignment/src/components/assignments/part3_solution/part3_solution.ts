@@ -10,7 +10,7 @@ import './part3.scss';
 export class AssignmentPart3SolutionComponent extends Vue {
 
   private personObserver: Observer<Person>;
-  private person: Person;
+  private readonly person: Person;
 
   constructor() {
     super();

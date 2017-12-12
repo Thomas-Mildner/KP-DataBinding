@@ -15,11 +15,11 @@
 * Introduction to Vue.js (also as deep as required for the exercise)
 * Problems and stumbling blocks of databinding
 
-[See the lecture notes here](./LectureNotes.md)
+[See the lecture notes here](./LectureNotes.md) or as [PDF](./assets/documents/LectureNotes.pdf).
 
 ## Assignment
 
-[Read the spec here](./AssignmentSpec.md)
+[Read the spec here](./AssignmentSpec.md) or as [PDF](./assets/documents/AssignmentSpec.pdf).
 
 ### Part 1
 
@@ -27,7 +27,7 @@
 
 ### Part 2
 
-* ICNDB-API ![Homepage](http://www.icndb.com/)
+* ICNDB-API [Homepage](http://www.icndb.com/)
 * Display a different count of jokes
 * Replace the first and lastname in all displayed jokes at once with data binding (performance)
 

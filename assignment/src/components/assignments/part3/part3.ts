@@ -1,4 +1,6 @@
-import {Component, Vue} from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
+import { Person } from './model/person';
+import { Observer } from './model/observer';
 
 import './part3.scss';
 
@@ -8,7 +10,8 @@ import './part3.scss';
 })
 export class AssignmentPart3Component extends Vue {
 
-  private url = 'https://icndb.kns-it.de/api/v1/jokes?page_size=';
+  private readonly person: Person;
+  private readonly personObserver: Observer;
 
   /**
    * Default constructor
@@ -16,11 +19,17 @@ export class AssignmentPart3Component extends Vue {
    */
   constructor() {
     super();
+    this.person = new Person('Hans');
+    this.personObserver = new Observer(this.person);
   }
 
-  /**
-   * Called after the instance has been mounted
-   */
   mounted() {
+    this.personObserver.addModelBinding('guid', 'guid');
+    this.personObserver.addDOMBinding('firstName', 'firstNameInput');
+    this.personObserver.addModelBinding('firstName');
+  }
+
+  updatePersonGuid() {
+    this.person.updateGuid();
   }
 }
