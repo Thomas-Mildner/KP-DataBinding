@@ -17,7 +17,7 @@ This includes the process flow logic, computations and control of the data.
 The last layer is called data layer.
 Its main point is to manage the persistence of the data, including loading and storing the data in a persistent way.
 
-![ThreeTierArchitecture](assets/images/threetierlayers.png)
+![ThreeTierArchitecture](assets/images/ThreeTierArchitecture.svg)
 
 The main task for data binding is to bind an UI element (or its content) to an application model.
 The value, which is displayed to the user is bound to a data container in the application logic.
@@ -31,10 +31,16 @@ The Observer principle is working often as an underlying binding mechanism.
 This short paragraph represents a quick repetition of the Observer pattern.
 If you are familiar with the principle, you may skip this section.
 
-![ObserverPattern](assets/images/observer.png)
+The following UML models the typical class structure of the Observer pattern:
+
+![Observer class spec](assets/images/ObserverClassSpec.svg)
 
 The Observer pattern is a software design pattern defining a one-to-many dependency between objects.
 When one object changes his state, all its dependents are notified and updated automatically.
+The next UML shows how the update mechanism is implemented:
+
+![Observer sequence](assets/images/ObserverSequence.svg)
+
 This technique is often used in other software design patterns like the MVC (Model-View-Controller) concept.
 The observed object is called the subject and registers itself at an Observer when it is created.
 Whenever the subject changes, it broadcasts to all registered Observers that it has changed.
@@ -45,6 +51,102 @@ If one part is changing the state of the object in the application layer, all re
 This ensures a synchronous state application wide.
 Because of these reasons many GUI frameworks and concepts have implemented the Observer pattern.
 
+### Data binding implementation
+
+There are different implementation possibilities for data binding.
+It is much easier to understand how data binding is working under the hood when a concrete implementation is observed.
+
+The following section discusses a simple (actually very naive) implementation of data binding in TypeScript.
+Of course the example could be implemented in many other languages but TypeScript is strongly typed which makes it easier to understand as dynamic typed languages and it is very famous for web development which is one of most important domains for data binding.
+
+TypeScript implements a concept called "properties".
+Java developers are used to implement private fields and corresponding `getter`s and `setter`s.
+Properties are aggregating these three parts to one: a _property_ of a class.
+
+The following Java code:
+
+```java
+public class Person {
+  private String firstName;
+
+  public String getFirstName() { return this.firstName; }
+  public void setFirstName(String firstName) { this.firstName = firstName; }
+}
+```
+
+would look in TypeScript like this:
+
+```ts
+class Person {
+  firstName: string
+}
+```
+
+That looks like a public field but actually the TypeScript compiler generates a structure like this:
+
+```ts
+class Person {
+  private _firstName: string
+
+  get firstName(): string {
+    return this._firstName
+  }
+
+  set firstName(firstName: string) {
+    this._firstName = firstName
+  }
+}
+```
+
+Nearly the same structure like in the Java code but auto generated (in C# this kind of properties are called _auto properties_)!
+Everytime the property `firstName` is written, the method `set firstName(...)` is executed and assigns the new value to the so called _backing field_.
+
+_Side note: JavaScript also implements properties so this is not just true for TypeScript but for all code that is compiled to or pure JavaScript!_
+
+This behavior can be used to implement data binding because it is possible to create an so called _interceptor_ which tracks all changes made to one or more (or even all) properties an object has.
+
+*Side note: Interceptors can be imagined like objects that don't change the logic but extend it for another aspect (because of that they are also called decorators and are a key concept of aspect oriented programming).*
+
+So the property of an object is like a _subject_ in terms of the Observer pattern and there are observers which are notified whenever the value of the property has been changed because the interceptor gets notified when the `set` method is called.
+
+The following sequence diagram shows how an abstract observer is notified when the value of property is overwritten:
+
+![Property interceptor](assets/images/PropertyInterceptor.svg)
+
+At the first look this sequence diagram may explains nothing but it does not contain more than the previous section already covered:
+
+1. An _interceptor_ is registered at a _property_.
+1. An _observer_ registers itself at the _interceptor_.
+1. A _user_ triggers the _setter_ (e.g. by typing something into an input field).
+1. The _setter_ is intercepted and the new value is proxied to the actual _setter_.
+1. The actual _setter_ writes the value through to the _backing field_.
+1. The _interceptor_ notifies the registered _observer_s.
+1. The _observer_s retrieve the new value of the _backing field_ through the _getter_ of the _property_.
+
+_Side note: obviously that explanation does not cover **all** aspects but the basics should be clear by now._
+
+The remaining question is: how is this observer registered so that all `setter` calls are intercepted.
+Actually that is pretty easy in JavaScript - other languages may require additional "magic".
+To make a property "reactive" - as it is called in Vue.js - the JavaScript built-in method [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) is used.
+The method takes a few arguments: the object where property should be defined, the name of the property to define and a descriptor object which contains a few configuration keys and - far more interesting - a `get` and a `set` function object that are invoked whenever the value of the property should be read or overwritten.
+There are some edge cases which have to be handled (like what is if the field was already a property and what about arrays?).
+The following snippet shows how to use `Object.defineProperty`:
+
+```ts
+Object.defineProperty(obj, key, {
+  enumerable: true,
+  configurable: true,
+  get: function reactiveGetter() {
+    /* proxy getter call
+     * e.g. by calling the preserved getter */
+  },
+  set: function reactiveSetter(newVal) {
+    /* intercept setter call
+     * e.g. notify observers or write new value to console or anything else */
+  }
+});
+```
+
 ### MVC Pattern
 
 The **M**odel **V**iew **C**ontroller (MVC) Pattern is a software architectural pattern for implementing user interfaces.
@@ -54,7 +156,7 @@ It divides the application into three interconnected parts.
 - View - the View represents the visualization of the data the model contains
 - Controller -  the Controller acts on both model and view. It controls the data flow into model objects and updates the view whenever the data changes. It is the link between model and view and keeps the view and model separate.
 
-![MVCPattern](assets/images/mvcConcept.png)
+![MVCPattern](assets/images/MVCConcept.svg)
 
 The MVC pattern offers architectural advantages over standard JavaScript - it helps the developer to write a better organized, well separated application code.
 This pattern is battle-proven and can be used for any programming language that includes a user interface.
