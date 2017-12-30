@@ -31,13 +31,13 @@ The Observer principle is working often as an underlying binding mechanism.
 This short paragraph represents a quick repetition of the Observer pattern.
 If you are familiar with the principle, you may skip this section.
 
-The following UML models the typical class structure of the Observer pattern:
+The following UML diagram models the typical class structure of the Observer pattern:
 
 ![Observer class spec](assets/images/ObserverClassSpec.svg)
 
 The Observer pattern is a software design pattern defining a one-to-many dependency between objects.
 When one object changes his state, all its dependents are notified and updated automatically.
-The next UML shows how the update mechanism is implemented:
+The next UML diagram shows how the update mechanism is implemented:
 
 ![Observer sequence](assets/images/ObserverSequence.svg)
 
@@ -50,108 +50,6 @@ An object in the business logic layer is registered as an Observer and all GUI c
 If one part is changing the state of the object in the application layer, all registered GUI components will be notified and can update their states in the UI.
 This ensures a synchronous state application wide.
 Because of these reasons many GUI frameworks and concepts have implemented the Observer pattern.
-
-### Data binding implementation
-
-There are different implementation possibilities for data binding.
-It is much easier to understand how data binding is working under the hood when a concrete implementation is observed.
-
-The following section discusses a simple (actually very naive) implementation of data binding in TypeScript.
-Of course the example could be implemented in many other languages but TypeScript is strongly typed which makes it easier to understand as dynamic typed languages and it is very famous for web development which is one of the most important domains for data binding.
-
-TypeScript implements a concept called "properties".
-Java developers are used to implement private fields and corresponding `getter`s and `setter`s to make their fields accessable from outside the class scope.
-Properties are aggregating these three parts to one: a _property_ of a class.
-
-The following Java code:
-
-```java
-public class Person {
-  private String firstName;
-
-  public String getFirstName() { return this.firstName; }
-  public void setFirstName(String firstName) { this.firstName = firstName; }
-}
-```
-
-would look in TypeScript like this:
-
-```ts
-class Person {
-  firstName: string
-}
-```
-
-That does look like a public field but actually the TypeScript compiler generates a structure like this:
-
-```ts
-class Person {
-  /* backing field */
-  private _firstName: string
-
-  /* getter */
-  get firstName(): string {
-    return this._firstName
-  }
-
-  /* setter */
-  set firstName(firstName: string) {
-    this._firstName = firstName
-  }
-}
-```
-
-Nearly the same structure like in the Java code but auto-generated!
-By the way, in C# this kind of properties are called _auto properties_.
-Everytime the property `firstName` is set, the method `set firstName(...)` is executed and assigns the new value to the so called _backing field_.
-
-_Side note: JavaScript also implements properties so this is not just true for TypeScript but for all code that is compiled to or pure JavaScript!_
-
-This behavior can be used to implement data binding because it is possible to create an so called _interceptor_ which tracks all changes made to one or more (or even all) properties an object has.
-
-*Side note: Interceptors are objects that don't change the logic but extend it with another aspect (because of that they are also called decorators and are a key concept of the aspect oriented programming paradigm).*
-
-The property of an object is the _subject_ in terms of the Observer pattern and there are _observers_ which are notified whenever the value of the property has been changed because actually the interceptor gets called when the value has to be changed, updates the underlying object and notifies all its _observers_ that a change occured.
-
-The following sequence diagram shows how an abstract observer is notified when the value of property is overwritten:
-
-![Property interceptor](assets/images/PropertyInterceptor.svg)
-
-At the first look this sequence diagram may explains nothing but it does not contain more than the previous section already covered:
-
-1. An _interceptor_ is registered at a _property_.
-1. An _observer_ registers itself at the _interceptor_.
-1. A _user_ triggers the _setter_ (e.g. by typing something into an input field).
-1. The _setter_ is intercepted and the new value is proxied to the actual _setter_.
-1. The actual _setter_ writes the value through to the _backing field_.
-1. The _interceptor_ notifies the registered _observer_s.
-1. The _observer_s retrieve the new value of the _backing field_ through the _getter_ of the _property_.
-
-_Side note: obviously that explanation does not cover **all** aspects but the basics should be clear by now._
-
-The remaining question is: how is this observer registered so that all `setter` calls are intercepted.
-Actually that is pretty easy in JavaScript - other languages may require additional "magic".
-To make a property "reactive" - as it is called in Vue.js - the JavaScript built-in method [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) is used.
-The method takes a few arguments: the object where property should be defined, the name of the property to define and a descriptor object which contains a few configuration keys and - far more interesting - a `get` and a `set` function object that are invoked whenever the value of the property should be read or written.
-There are some edge cases which have to be handled (like what is if the field was already a property and what about arrays).
-The following snippet shows how to use `Object.defineProperty`:
-
-```ts
-Object.defineProperty(obj, key, {
-  enumerable: true,
-  configurable: true,
-  get: function reactiveGetter() {
-    /* proxy getter call
-     * e.g. by calling the preserved getter */
-  },
-  set: function reactiveSetter(newVal) {
-    /* intercept setter call
-     * e.g. notify observers or write new value to console or anything else */
-  }
-});
-```
-
-There are still some things missing to complete a data binding mechanism e.g. a store for all observers, methods to update the UI and much more but these things are not covered here as they are not really import for the concept.
 
 ### MVC Pattern
 
@@ -171,7 +69,7 @@ For example, the controller can store the data in the model and persistence laye
 
 ### Challenges for data binding
 
-Whenever a GUI application has to be implemented (or redesigned), programmers have solve many challenges.
+Whenever a GUI application has to be implemented (or redesigned), programmers have to solve many challenges.
 To name a few there are:
 
 - Input Validation
@@ -274,17 +172,28 @@ There are a lot of GUI frameworks that are supporting data binding. The followin
 
 There are not only web application frameworks, there are also some desktop GUI frameworks like JavaFx and Microsofts C# WPF. The binding mechanism is similar over all frameworks, only the syntax will be a bit different. Most frameworks are developed for JavaScript and the web environment such as Angular or React. In this Seminar Paper there will be a special view on Vue.js.
 
-### Typescript
+### TypeScript
 
-Before we can start with the implementation of data binding a short introduction to typescript and its relevant technologies are necessary.
+Before we can start with the implementation of data binding a short introduction to TypeScript and its relevant technologies are necessary.
 
-Typescript is a statically typed language and will be compiled to plain JavaScript. Since the release of Angular 2.0 at the latest, Typescript has become well-known and popular. Referring to the developer survey from 2017 by StackOverflow, Typescript is the third most popular programming language among developers. ([Source](https://insights.stackoverflow.com/survey/2017))
+TypeScript is a statically typed language and will be compiled to plain JavaScript.
+Since the release of Angular 2.0 at the latest, TypeScript has become well-known and popular.
+Referring to the developer survey from 2017 by StackOverflow, TypeScript is the third most popular programming language among developers. ([Source](https://insights.stackoverflow.com/survey/2017))
 
-Typescript was developed because of some problems with JavaScript. JavaScript has a reputation for being difficult to maintain in large projects and not easy to reuse. The solution was to design a new programming language which solves the main problems of JavaScript. The lead Designer of Typescript is Anders Heijlsberg, who is also the Designer of C# at Microsoft.
+TypeScript was developed because of some problems with JavaScript.
+JavaScript has a reputation for being difficult to maintain in large projects and not easy to reuse.
+The solution was to design a new programming language which solves the main problems of JavaScript.
+The lead designer of TypeScript is Anders Heijlsberg, who is also the designer of C# at Microsoft.
 
-Typescript is strongly typed, object orientated and a compiled language. It is also a superset of JavaScript because it will be compiled to plain JavaScript. In other words: Typescript is plain JavaScript with some additional features. This is a major advantage as a developer doesn\`t need to learn a new programming language if he/she already knows how to program JavaScript. Existing JavaScript code can be consumed in a Typescript project, this means that existing JavaScript frameworks, tools and libraries can be reused in a Typescript project. Another advantage is the fact that Typescript is portable across multiple browsers, devices and operating systems. Typescript runs wherever JavaScript runs.
+TypeScript is strongly typed, object orientated and a compiled language.
+It is also a superset of JavaScript because it will be compiled to plain JavaScript.
+In other words: TypeScript is plain JavaScript with some additional features.
+This is a major advantage as a developer doesn\`t need to learn a new programming language if he/she already knows how to program JavaScript.
+Existing JavaScript code can be consumed in a TypeScript project, i.e. that existing JavaScript frameworks, tools and libraries can be reused in a TypeScript project.
+Another advantage is the fact that TypeScript is portable across multiple browsers, devices and operating systems.
+TypeScript runs wherever JavaScript runs.
 
-Let us look at a first example of Typescript:
+Let's look at a first example of TypeScript:
 
 ```ts
 class Greeting {
@@ -297,9 +206,11 @@ let g = new Greeting();
 g.greet();
 ```
 
-Because Typescript is strongly typed and object orientated a class called "Greeting" with a containing method "greet" can be created. A new object named 'g' is instantiated and the method 'greet()' will be called.
+Because TypeScript is strongly typed and object orientated a class called "Greeting" with a containing method "greet" can be created. A new object named 'g' is instantiated and the method 'greet()' will be called.
 
-If we are looking at a second example of Typescript, a main advantage will appear:
+_Side note: since ECMAScript 2015 JavaScript also supports the definition of classes like in the TypeScript sample. Previously classes were typically defined by using the prototyping mechanism which looks a little beard for developers used to implement classes like in Java or C#._
+
+If we are looking at a second example of TypeScript, a main advantage will appear:
 
 ```ts
 let firstName: string = "John";
@@ -315,30 +226,138 @@ let num: number = "hello"
 ```
 
 ⚡ Compiler error because `"hello"` is no `number`
-The compiler will throw an error, because the variable `"hello"` is no `number`. This is a advantage of a strongly typed programming language.
+The compiler will throw an error, because the variable `"hello"` is no `number`. 
+This is a advantage of a strongly typed programming language.
+
+### Data binding implementation
+
+There are different implementation possibilities for data binding.
+It is much easier to understand how data binding is working under the hood when a concrete implementation is observed.
+
+The following section discusses a simple (actually very naive) implementation of data binding in TypeScript.
+Of course the example could be implemented in many other languages but TypeScripts strong typing makes it easier to understand as dynamic typed languages and it is very famous in web development which is one of the most important domains of data binding.
+
+TypeScript implements a concept called "properties".
+Java developers are used to implement private fields and corresponding `getter`s and `setter`s to make their fields accessable from outside the class scope.
+Properties are aggregating these three parts to one: a _property_ of a class.
+
+The following Java code:
+
+```java
+public class Person {
+  private String firstName;
+
+  public String getFirstName() { return this.firstName; }
+  public void setFirstName(String firstName) { this.firstName = firstName; }
+}
+```
+
+would look in TypeScript like this:
+
+```ts
+class Person {
+  firstName: string
+}
+```
+
+That does look like a public field but actually the TypeScript compiler generates a structure like this:
+
+```ts
+class Person {
+  /* backing field */
+  private _firstName: string
+
+  /* getter */
+  get firstName(): string {
+    return this._firstName
+  }
+
+  /* setter */
+  set firstName(firstName: string) {
+    this._firstName = firstName
+  }
+}
+```
+
+Nearly the same structure like in the Java code but auto-generated!
+By the way, in C# this kind of properties are called _auto properties_.
+Everytime the property `firstName` is set, the method `set firstName(...)` is executed and assigns the new value to the so called _backing field_.
+
+_Side note: JavaScript also implements properties so this is not just true for TypeScript but for all code that is compiled to or pure JavaScript!_
+
+This behavior can be used to implement data binding because it is possible to create an so called _interceptor_ which tracks all changes made to one or more (or even all) properties an object has.
+
+*Side note: Interceptors are objects that don't change the logic but extend it with another aspect (because of that they are also called decorators and are a key concept of the aspect oriented programming (AOP) paradigm).*
+
+The property of an object is the _subject_ in terms of the Observer pattern and there are _observers_ which are notified whenever the value of the property has been changed because actually the interceptor gets called when the value has to be changed, updates the underlying object and notifies all its _observers_ that a change occured.
+
+The following sequence diagram shows how an abstract observer is notified when the value of property is overwritten:
+
+![Property interceptor](assets/images/PropertyInterceptor.svg)
+
+At first glance this sequence diagram may explain nothing but it does not contain more than the previous section already covered:
+
+1. An _interceptor_ is registered at a _property_.
+1. An _observer_ registers itself at the _interceptor_.
+1. A _user_ triggers the _setter_ (e.g. by typing something into an input field).
+1. The _setter_ is intercepted and the new value is proxied to the actual _setter_.
+1. The actual _setter_ writes the value through to the _backing field_ .
+1. The _interceptor_ notifies the registered *observer*s.
+1. The *observer*s retrieve the new value of the _backing field_ through the _getter_ of the _property_.
+
+_Side note: obviously that explanation does not cover **all** aspects but the basics should be clear by now._
+
+The remaining question is: how is this observer registered so that all `setter` calls are intercepted.
+Actually that is pretty easy in JavaScript - other languages may require additional "magic".
+To make a property "reactive" - as it is called in Vue.js - the JavaScript built-in method [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) is used.
+The method takes a few arguments: the object at which the property should be defined, the name of the property to define and a descriptor object which contains a few configuration keys and - far more interesting - a `get` and a `set` function object that are invoked whenever the value of the property should be read or written.
+There are some edge cases which have to be handled (like what is if the field was already a property and what about arrays) but they are not required to get the concept.
+
+The following snippet shows how to use `Object.defineProperty`:
+
+```ts
+Object.defineProperty(obj, key, {
+  enumerable: true,
+  configurable: true,
+  get: function reactiveGetter() {
+    /* proxy getter call
+     * e.g. by calling the preserved getter */
+  },
+  set: function reactiveSetter(newVal) {
+    /* intercept setter call
+     * e.g. notify observers or write new value to console or anything else */
+  }
+});
+```
+
+There are still some things missing to complete a data binding mechanism e.g. a store for all observers, methods to update the UI and much more but these things are not covered here as they are not really import for the concept.
 
 ### Vue.js
 
-Vue.js is a progressive JavaScript framework for building user interfaces. [Homepage](https://vuejs.org) To compare Vue.js with other libraries/ frameworks, check out the [comparison](https://vuejs.org/v2/GUIde/comparison.html) with other common frameworks.
+Vue.js is a progressive JavaScript framework for building user interfaces.
+Check out the [comparison](https://vuejs.org/v2/GUIde/comparison.html) with other common frameworks.
 It is highly adoptable and easy to integrate in existing or new web projects.
-(Vue.js doesn\`t support IE8 and below)
+Keep in mind that Vue.js doesn\`t support IE8 and below.
 
-In the following example "data binding" will be used without Vue.js. This is a sample programmed with Vanilla JS. The first code snippet is from HTML showing a declaration of a paragraph with the id `"test-id"` and the default value `"Nothing to say"`.
+In the following example "data binding" will be used without Vue.js.
+This is a sample implemented with Vanilla JS.
+The first HTML snippet is a declaration of a paragraph with the id `"test-id"` and the default value `"Nothing to say"`.
 
 ```html
 <p id="test-id">Nothing to say</p>
 ```
 
-Now let us add some logic. First the paragraph with the id `"test-id"` will be selected from the DOM (Document Object Model) and stored into a variable `"pElem"`. After this step the value of the paragraph could be changed to `"Hello from JS"`. This is 
+Now let us add some logic.
+First the paragraph with the id `"test-id"` will be selected from the DOM (Document Object Model) and stored in a variable `"pElem"`.
+After this step the value of the paragraph could be changed to `"Hello from JS"`.
 
 ```js
 let pElem = document.getElementById("test-id");
 pElem.innerHTML = "Hello from JS";
 ```
 
-This mechanism has little to do with data binding, but shows the fundamental topic.
-
-The same problem is solved with "real data binding" in Vue.js:
+This snippet has not much in common with data binding, but it demonstrates the fundamental topic.
+The following snippet implements the same logic but with "real data binding" accomplished with Vue.js:
 
 ```html
 <div id="root">
@@ -356,20 +375,28 @@ new Vue({
 </script>
 ```
 
-The value of `"message"` will be bound in both directions to the input field in the view. The binding will be declared with a `"v-model"` or by using a `"{{template-string}}"` directly in HTML. In the script tag a new Vue with a containing property message in the data property will be declared. This information is bound to the view.
+The value of `message` will be bound in both directions to the input field in the view.
+The binding will be declared with a `"v-model"` or by using a `"{{template-string}}"` directly in HTML.
+In the script tag a new Vue with a containing property message in the data property will be declared.
+This information is bound to the view.
 
-#### How is data binding implemented in Vue.js?
+#### How data binding is implemented in Vue.js
 
-The following picture describes how the mechanism of data binding in vue.js is implemented. The bound models are just plain JavaScript objects. When the developer modifies these objects, the view will update. The mechanism is called Vue\`s reactivity system.
+The following picture describes how the mechanism of data binding in Vue.js is implemented.
+The bound models are just plain JavaScript objects.
+When the developer modifies these objects, the view will update.
+The mechanism is called Vue\`s reactivity system.
 
 ![DataBindingVue](assets/images/vuejs_binding.png)
 
-If a plain JavaSript object is bound to a Vue instance, Vue will walk through all of its properties and convert them to getters/setters using `"Object.defineProperty"`. These getters/setters are invisible to the user but allow Vue to perform dependency tracking and change notification when properties are accessed or modified.
-Each component instance has a corresponding `"Watcher"` instance which records any changes of the instance. These changes can be rendered into the Virtual DOM Tree.
+If a plain JavaScript object is bound to a Vue instance, Vue will traverse all of its properties and convert them to getters/setters using `Object.defineProperty`.
+These getters/setters are invisible to the user but allow Vue to perform dependency tracking and change notification when properties are accessed or modified.
+Each component instance has a corresponding `Watcher` instance which records any changes of the instance.
+These changes can be rendered into the virtual DOM tree.
 
 Be careful, Vue is limited to the features of JavaScript and cannot detect property additions or deletions!
 
-```ts
+```js
 var vm = new Vue({
   data: {
     a: 1  // `vm.a` is now reactive
@@ -378,16 +405,26 @@ var vm = new Vue({
 vm.b = 2 // `vm.b` is NOT reactive
 ```
 
-The addition of the variable `"b"` will not be notified. This mechanism, if needed, could be solved with:
+The addition of the variable `"b"` will not be notified.
+This problem, if needed, could be solved with:
 
-```ts
+```js
 Vue.set(vm.someObject, 'b', 2)
 ```
 
-As already discussed, it could be a main disadvantage that data binding could cause performance issues in the application if a huge amount of data will be updated. Vue.js solves this problem by performing DOM updates `"asynchronously"`. Whenever a data change is observed, it will open a queue and buffer all the data changes that happens in the same event loop. If the same watcher is triggered multiple times in the same event loop, it will be pushed only once to the queue. This mechanism is preventing unnecessary calculations and DOM manipulations. An intern event called `"tick"` is triggered and the queues will be flushed and the update will be executed.
-This means that changed components in the GUI will not re-render immediately. It will update in the next `"tick"` event, when the queue is flushed. Most of the time the developer should not care about this, but in some cases it could be necessary to manipulate the DOM by hand. Otherwise some actions should be triggered if the component is re-rendered. For this kind of use case Vue.js is providing a callback function to be notified if the `"tick"` event is executed.
+As already discussed, a typical design flaw of data binding are performance issues if a huge amount of data is bound and has to be updated at the same time.
+Vue.js solves this problem by performing DOM updates _asynchronously_.
+Whenever a data change is observed, it will open a queue and buffer all the data changes that happen in the same event loop.
+If the same watcher is triggered multiple times in the same event loop, it will be pushed only once to the queue.
+This mechanism is preventing unnecessary calculations and DOM manipulations.
+An intern event called _tick_ is triggered and the queues will be flushed and the update will be executed.
+This means that changed components in the GUI will not re-render immediately.
+It will update in the next _tick_ event, when the queue is flushed.
+Most of the time the developer should not care about this, but in some cases it could be necessary to manipulate the DOM by hand.
+Otherwise some actions should be triggered if the component is re-rendered.
+For this kind of use case Vue.js is providing a callback function to be notified if the _tick_ event is executed.
 
-```ts
+```js
 Vue.component('example', {
   template: '<span>{{ message }}</span>',
   data: function () {
@@ -407,18 +444,26 @@ Vue.component('example', {
 })
 ```
 
-A new Vue component is declared with a bounded property `"message"` and containing methods. The instance method `"vm.$nextTick()"` will be automatically bound to the current Vue instance.
+A new Vue component is declared with a bounded property `message` and containing methods.
+The instance method `vm.$nextTick()` will be automatically bound to the current Vue instance.
 
 ## Summary
 
 ### Data binding
 
-Data binding is a elementary concept of GUI programming often based on common software design patterns like the Observer pattern. There are some disadvantages of data binding which could be possible a problem but the advantages outweigh the disadvantages. The developer should choose the right binding mechanism for the suited use case to prevent errors. There are a lot of GUI frameworks who are support data binding.
+Data binding is a elementary concept of GUI programming often based on common software design patterns like the Observer pattern.
+There are some disadvantages of data binding which could be possible a problem but the advantages outweigh the disadvantages.
+The developer should choose the right binding mechanism for the suited use case to prevent errors.
+There are a lot of GUI frameworks who are support data binding.
 
 ### Typescript
 
-Typescript is a superset of JavaScript, which means that a average JavaScript programmer could easily learn Typescript. He/she will take benefits with Typescript like a strongly typed language, object orientation and compile checks. Some kind of errors could be detected while compile time and will not throw runtime errors.
+Typescript is a superset of JavaScript, which means that a average JavaScript programmer could easily learn Typescript.
+He/she will take benefits with Typescript like a strongly typed language, object orientation and compile checks.
+Some kind of errors could be detected while compile time and will not throw runtime errors.
 
 ### Vue.js
 
-Vue.js is a lightweight JavaScript framework to easily create and maintain applications. The integrated data binding is asynchronously implemented with buffer and queues. This overrides the main disadvantage of speed problems.
+Vue.js is a lightweight JavaScript framework to easily create and maintain applications.
+The integrated data binding is asynchronously implemented with buffer and queues.
+This overrides the main disadvantage of speed problems.
