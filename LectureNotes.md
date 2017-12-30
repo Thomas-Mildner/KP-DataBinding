@@ -57,10 +57,10 @@ There are different implementation possibilities for data binding.
 It is much easier to understand how data binding is working under the hood when a concrete implementation is observed.
 
 The following section discusses a simple (actually very naive) implementation of data binding in TypeScript.
-Of course the example could be implemented in many other languages but TypeScript is strongly typed which makes it easier to understand as dynamic typed languages and it is very famous for web development which is one of most important domains for data binding.
+Of course the example could be implemented in many other languages but TypeScript is strongly typed which makes it easier to understand as dynamic typed languages and it is very famous for web development which is one of the most important domains for data binding.
 
 TypeScript implements a concept called "properties".
-Java developers are used to implement private fields and corresponding `getter`s and `setter`s.
+Java developers are used to implement private fields and corresponding `getter`s and `setter`s to make their fields accessable from outside the class scope.
 Properties are aggregating these three parts to one: a _property_ of a class.
 
 The following Java code:
@@ -82,32 +82,36 @@ class Person {
 }
 ```
 
-That looks like a public field but actually the TypeScript compiler generates a structure like this:
+That does look like a public field but actually the TypeScript compiler generates a structure like this:
 
 ```ts
 class Person {
+  /* backing field */
   private _firstName: string
 
+  /* getter */
   get firstName(): string {
     return this._firstName
   }
 
+  /* setter */
   set firstName(firstName: string) {
     this._firstName = firstName
   }
 }
 ```
 
-Nearly the same structure like in the Java code but auto generated (in C# this kind of properties are called _auto properties_)!
-Everytime the property `firstName` is written, the method `set firstName(...)` is executed and assigns the new value to the so called _backing field_.
+Nearly the same structure like in the Java code but auto-generated!
+By the way, in C# this kind of properties are called _auto properties_.
+Everytime the property `firstName` is set, the method `set firstName(...)` is executed and assigns the new value to the so called _backing field_.
 
 _Side note: JavaScript also implements properties so this is not just true for TypeScript but for all code that is compiled to or pure JavaScript!_
 
 This behavior can be used to implement data binding because it is possible to create an so called _interceptor_ which tracks all changes made to one or more (or even all) properties an object has.
 
-*Side note: Interceptors can be imagined like objects that don't change the logic but extend it for another aspect (because of that they are also called decorators and are a key concept of aspect oriented programming).*
+*Side note: Interceptors are objects that don't change the logic but extend it with another aspect (because of that they are also called decorators and are a key concept of the aspect oriented programming paradigm).*
 
-So the property of an object is like a _subject_ in terms of the Observer pattern and there are observers which are notified whenever the value of the property has been changed because the interceptor gets notified when the `set` method is called.
+The property of an object is the _subject_ in terms of the Observer pattern and there are _observers_ which are notified whenever the value of the property has been changed because actually the interceptor gets called when the value has to be changed, updates the underlying object and notifies all its _observers_ that a change occured.
 
 The following sequence diagram shows how an abstract observer is notified when the value of property is overwritten:
 
@@ -128,8 +132,8 @@ _Side note: obviously that explanation does not cover **all** aspects but the ba
 The remaining question is: how is this observer registered so that all `setter` calls are intercepted.
 Actually that is pretty easy in JavaScript - other languages may require additional "magic".
 To make a property "reactive" - as it is called in Vue.js - the JavaScript built-in method [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) is used.
-The method takes a few arguments: the object where property should be defined, the name of the property to define and a descriptor object which contains a few configuration keys and - far more interesting - a `get` and a `set` function object that are invoked whenever the value of the property should be read or overwritten.
-There are some edge cases which have to be handled (like what is if the field was already a property and what about arrays?).
+The method takes a few arguments: the object where property should be defined, the name of the property to define and a descriptor object which contains a few configuration keys and - far more interesting - a `get` and a `set` function object that are invoked whenever the value of the property should be read or written.
+There are some edge cases which have to be handled (like what is if the field was already a property and what about arrays).
 The following snippet shows how to use `Object.defineProperty`:
 
 ```ts
@@ -146,6 +150,8 @@ Object.defineProperty(obj, key, {
   }
 });
 ```
+
+There are still some things missing to complete a data binding mechanism e.g. a store for all observers, methods to update the UI and much more but these things are not covered here as they are not really import for the concept.
 
 ### MVC Pattern
 
