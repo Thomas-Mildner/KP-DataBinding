@@ -138,12 +138,49 @@ A warning for an invalid mail address is displayed and there is a hint for the u
 
 ![Input Validation](assets/images/validation.png)
 
+Depending on the platform and the framework used to implement the UI these validation rules may be declared within the markup like in Vue.js:
+
+```html
+<div class="form-group" :class="{'has-error': errors.has('email') }" >
+    <label class="control-label" for="email">Email</label>
+    <!--
+      `v-valicate` is a special attribute to mark that the value has to be validated
+      by the rules declared within the `data-rules` attribute
+     -->
+    <input v-model="email"
+    v-validate="email" data-rules="required|email" 
+    type="email" placeholder="Email">
+    <p class="text-danger" v-if="errors.has('email')">{{ errors.first('email') }}</p>
+</div>
+```
+
+_Remark: the sample uses the library `vee-validate` for validation rules._
+
+Or by adding validation decorators to the properties in the UI like in WPF:
+
+```cs
+public class Product {
+  /* property will only be set if input value is present
+   * and not longer than 50 characters
+   * additionally an error will occur when the value is not set */
+  [StringLength(50),Required]
+  public string Name { get; set; }
+
+  /* property will only be set if input value is between 0 and 9999 */
+  [Range(0, 9999)]
+  public int Weight { get; set; }
+}
+```
+
+No matter which style of declaring the validation rules is used, a developer has to keep in mind, that validation also has its costs and adds more complexity to application e.g. in asynchronous scenarios.
+
 #### Data type mapping
 
 Another challenge, which has to be solved automatically with data binding is data type mapping.
-It is a strictly type programming language, that there are different data types like integer, string, object and so on..
+It is a key aspect of a strongly typed programming language, that there are different data types like integer, string, object and so on..
 The challenge for data binding is to automatically map different types of data to the same GUI element.
 For example, a textbox field can represent integer values but also plain text.
+
 On the other hand, a complex object has to be bound to a couple of fields in the GUI.
 An example may be an object like "customer" with different type of information such as first name, last name and the birth date.
 This mechanism is also part of the input validation topic because input validation must prevent storing wrong data types in the underlying objects.
