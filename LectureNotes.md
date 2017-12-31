@@ -56,25 +56,62 @@ Because of these reasons many GUI frameworks and concepts have implemented the O
 The **M**odel **V**iew **C**ontroller (MVC) Pattern is a software architectural pattern for implementing user interfaces.
 It divides the application into three interconnected parts.
 
-- Model - the model is representing an object carrying data. It can also have logic to update controller if its data changes.
-- View - the View represents the visualization of the data the model contains
-- Controller -  the Controller acts on both model and view. It controls the data flow into model objects and updates the view whenever the data changes. It is the link between model and view and keeps the view and model separate.
+* Model - the model is representing an object carrying data. It can also have logic to update controller if its data changes.
+* View - the View represents the visualization of the data the model contains
+* Controller -  the Controller acts on both model and view. It controls the data flow into model objects and updates the view whenever the data changes. It is the link between model and view and keeps the view and model separate.
 
 ![MVCPattern](assets/images/MVCConcept.svg)
 
-The MVC pattern offers architectural advantages over standard JavaScript - it helps the developer to write a better organized, well separated application code.
+The MVC pattern offers architectural advantages because it helps the developer to write a better organized, well separated application code.
 This pattern is battle-proven and can be used for any programming language that includes a user interface.
 The persistence of the data is not part of the pattern and could be solved with some different implementations.
 For example, the controller can store the data in the model and persistence layer, or the model works with its own persistence strategy.
+
+There are two well-known derivations of the MVC pattern: the **M**odel **V**iew **P**resenter (MVP) and the **M**odel **V**iew **V**iew**M**odel (MVVM) pattern.
+These patterns are quite similar to the MVC pattern beside a few minor changes.
+The most notable difference of the MVP to the MVC pattern is that the presenter is not only responsible for changing the model but also for updating the view when the model changes.
+
+The MVVM pattern was developed by Microsoft when they created the Windows Presentation Foundation (WPF) framework.
+In contrast to the MVC and MVP pattern MVVM introduces a so called _ViewModel_ which couples the view and model.
+The biggest difference between the MVC and the MVVM pattern is that the MVVM pattern was already designed with data binding in mind.
+The _ViewModel_ provides the view properties and commands to which view elements can be bound.
+In the case of WPF the data binding is implemented in the declarative view code (called XAML in WPF).
+Almost all current UI frameworks implement data binding in combination with MVVM or a derivation of it.
+To name a few examples: AngularIO, Vue.js, Angular1 (they call it `controllerAs` style but actually it is MVVM) and many more.
+
+JavaFX is one of the last frameworks where bindings are declared by writing _"real"_ code.
+In JavaFX data binding is implemented with a set of special primitives (like `StringProperty`, `IntegerProperty` and so on) which can be bound to special properties of JavaFX view elements like this:
+
+```java
+/* import the view element to the controller */
+@FXML
+private TextField txtField;
+/* declare a bindable property of type `String` */
+private final StringProperty txtFieldProperty = new SimpleStringProperty();
+
+@Override
+public void initialize(URL url, ResourceBundle resourceBundle) {
+   /* bind the TextField to the StringProperty in a bidirectional way */
+    txtField.textProperty().bindBidirectional(txtFieldProperty);
+    /* value will be set to TextField */
+    txtFieldProperty.set("Hello Wold");
+}
+```
+
+This mechanism offers a few advantages like _"conditional bindings"_ but it also requires the developer to declare all bindings in the code of the controller.
+As long as the view does not contain more than five to ten elements that's no problem but with an increasing number of elements to handle the code is getting more complicated, unreadable and unmaintainable.
+
+Almost all UI frameworks for web applications are declaring bindings within the HTML code with a special template syntax.
+A popular example for data bindings in HTML with a template syntax is Vue.js which is covered later in this article.
 
 ### Challenges for data binding
 
 Whenever a GUI application has to be implemented (or redesigned), programmers have to solve many challenges.
 To name a few there are:
 
-- Input Validation
-- Data type mapping
-- Performance issues
+* Input Validation
+* Data type mapping
+* Performance issues
 
 This chapter evaluates if these challenges can be solved with data binding.
 
