@@ -125,7 +125,7 @@ A well-known example are SQL injection attacks, where the input of a user is not
 This allows the attacker to execute SQL commands in the context of the application.
 Input validation should happen as early as possible in the data flow.
 This includes also GUI input validation.
-From an IT security perspective it's not enough to validate the data just in the GUI layer as this mechanism may by bypassed.
+From an IT security perspective it's not enough to validate the data just in the GUI layer as this mechanism may be bypassed.
 
 On the other hand, input validation is some extra feature and a benefit for the user.
 For example, the field "city" can be auto filled if the zip code is entered correctly.
@@ -144,7 +144,7 @@ Depending on the platform and the framework used to implement the UI these valid
 <div class="form-group" :class="{'has-error': errors.has('email') }" >
     <label class="control-label" for="email">Email</label>
     <!--
-      `v-valicate` is a special attribute to mark that the value has to be validated
+      `v-validate` is a special attribute to mark that the value has to be validated
       by the rules declared within the `data-rules` attribute
      -->
     <input v-model="email"
@@ -203,7 +203,7 @@ A good advice or good practice is to reduce heavy parsing of data in the GUI thr
 
 ### Two-way vs. One-way data binding
 
-In most GUI frameworks are multiple binding mechanism supported. The developer can often choose between one-way and two-way binding. Some Programming languages are supporting some additional binding mechanism like C# does with One-Way-To-Source and so on.
+In most GUI frameworks are multiple binding mechanism supported. The developer can often choose between one-way and two-way binding. Some programming languages are supporting some additional binding mechanism like C# does with One-Way-To-Source and so on.
 For each use case should a suited binding type chosen.
 
 #### One-way data binding
@@ -220,7 +220,7 @@ This mechanism has a few advantages but also a few disadvantages. The following 
 | easy to debug                                 | invalid states in the application                                     |
 | no code to display values in the GUI required | -                                                                     |
 
-Listed as an advantage of one-way data binding is that it exists only one direction of the data flow, from the model to the view. This leads to a easier way to debug and search for errors for the developer in error cases. Also an advantage for the developer is the fact to write less code for the frontend. There is no logic for displaying the values in the GUI required. The code in the frontend looks cleaner and is easier to maintain. Another "advantage" is the fact that there is no input validation and data type mapping necessary. That\`s because the user cannot change the data - some applications could be useless. On the other hand, in some use cases you do not need to change the data from the view. For example,labels that displays help to the user do not need to be updated by the user.
+Listed as an advantage of one-way data binding is that it exists only one direction of the data flow, from the model to the view. This leads to a easier way to debug and search for errors for the developer in error cases. Also an advantage for the developer is the fact to write less code for the frontend. There is no logic for displaying the values in the GUI required. The code in the frontend looks cleaner and is easier to maintain. Another "advantage" is the fact that there is no input validation and data type mapping necessary. That\`s because the user cannot change the data - some applications could be useless. On the other hand, in some use cases you do not need to change the data from the view. For example, labels that displays help to the user do not need to be updated by the user.
 
 #### Two-way data binding
 
@@ -299,9 +299,9 @@ Compile Error:
 let num: number = "hello"
 ```
 
-⚡ Compiler error because `"hello"` is no `number`
+⚡ Compiler error because `"hello"` is no `number`.
 The compiler will throw an error, because the variable `"hello"` is no `number`. 
-This is a advantage of a strongly typed programming language.
+This is an advantage of a strongly typed programming language.
 
 ### Data binding implementation
 
@@ -312,7 +312,7 @@ The following section discusses a simple (actually very naive) implementation of
 Of course the example could be implemented in many other languages but TypeScripts strong typing makes it easier to understand as dynamic typed languages and it is very famous in web development which is one of the most important domains of data binding.
 
 TypeScript implements a concept called "properties".
-Java developers are used to implement private fields and corresponding `getter`s and `setter`s to make their fields accessable from outside the class scope.
+Java developers are used to implement private fields and corresponding `getter`s and `setter`s to make their fields accessible from outside the class scope.
 Properties are aggregating these three parts to one: a _property_ of a class.
 
 The following Java code:
@@ -355,7 +355,7 @@ class Person {
 
 Nearly the same structure like in the Java code but auto-generated!
 By the way, in C# this kind of properties are called _auto properties_.
-Everytime the property `firstName` is set, the method `set firstName(...)` is executed and assigns the new value to the so called _backing field_.
+Each time the property `firstName` is set, the method `set firstName(...)` is executed and assigns the new value to the so called _backing field_.
 
 _Side note: JavaScript also implements properties so this is not just true for TypeScript but for all code that is compiled to or pure JavaScript!_
 
@@ -363,7 +363,7 @@ This behavior can be used to implement data binding because it is possible to cr
 
 *Side note: Interceptors are objects that don't change the logic but extend it with another aspect (because of that they are also called decorators and are a key concept of the aspect oriented programming (AOP) paradigm).*
 
-The property of an object is the _subject_ in terms of the Observer pattern and there are _observers_ which are notified whenever the value of the property has been changed because actually the interceptor gets called when the value has to be changed, updates the underlying object and notifies all its _observers_ that a change occured.
+The property of an object is the _subject_ in terms of the Observer pattern and there are _observers_ which are notified whenever the value of the property has been changed because actually the interceptor gets called when the value has to be changed, updates the underlying object and notifies all its _observers_ that a change occurred.
 
 The following sequence diagram shows how an abstract observer is notified when the value of property is overwritten:
 
@@ -375,7 +375,7 @@ At first glance this sequence diagram may explain nothing but it does not contai
 1. An _observer_ registers itself at the _interceptor_.
 1. A _user_ triggers the _setter_ (e.g. by typing something into an input field).
 1. The _setter_ is intercepted and the new value is proxied to the actual _setter_.
-1. The actual _setter_ writes the value through to the _backing field_ .
+1. The actual _setter_ writes the value through to the _backing field_.
 1. The _interceptor_ notifies the registered *observer*s.
 1. The *observer*s retrieve the new value of the _backing field_ through the _getter_ of the _property_.
 
@@ -525,14 +525,14 @@ The instance method `vm.$nextTick()` will be automatically bound to the current 
 
 ### Data binding
 
-Data binding is a elementary concept of GUI programming often based on common software design patterns like the Observer pattern.
+Data binding is an elementary concept of GUI programming often based on common software design patterns like the Observer pattern.
 There are some disadvantages of data binding which could be possible a problem but the advantages outweigh the disadvantages.
 The developer should choose the right binding mechanism for the suited use case to prevent errors.
 There are a lot of GUI frameworks who are support data binding.
 
 ### Typescript
 
-Typescript is a superset of JavaScript, which means that a average JavaScript programmer could easily learn Typescript.
+Typescript is a superset of JavaScript, which means that an average JavaScript programmer could easily learn Typescript.
 He/she will take benefits with Typescript like a strongly typed language, object orientation and compile checks.
 Some kind of errors could be detected while compile time and will not throw runtime errors.
 
