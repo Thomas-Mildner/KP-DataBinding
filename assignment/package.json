@@ -71,7 +71,7 @@
     "karma-sourcemap-loader": "~0.3.7",
     "karma-teamcity-reporter": "~1.0.1",
     "karma-webpack": "~2.0.6",
-    "lodash.merge": "~4.6.0",
+    "lodash.merge": "~4.6.2",
     "minimist": "~1.2.0",
     "mocha": "~4.0.1",
     "ncp": "~2.0.0",
