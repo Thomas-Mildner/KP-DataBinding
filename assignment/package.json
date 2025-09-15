@@ -31,7 +31,7 @@
     "lodash": "^4.17.21",
     "marked": "^4.0.10",
     "uiv": "^0.14.1",
-    "vue": "~2.5.8",
+    "vue": "~3.0.0",
     "vue-class-component": "~6.1.0",
     "vue-material": "^0.7.1",
     "vue-openapi": "^0.5.2",
